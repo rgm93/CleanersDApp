@@ -23,6 +23,26 @@ class ProvisionedChanges extends Component {
         id: '_ProvisionedChanges.description',
         defaultMessage: 'Description'
       },
+      roleName: {
+        id: '_ProvisionedChanges.roleName',
+        defaultMessage: 'Role'
+      },
+      username: {
+        id: '_ProvisionedChanges.username',
+        defaultMessage: 'Username'
+      },
+      password: {
+        id: '_ProvisionedChanges.password',
+        defaultMessage: 'Password'
+      },
+      postalCode: {
+        id: '_ProvisionedChanges.postalCode',
+        defaultMessage: 'Postal Code'
+      },
+      nif: {
+        id: '_ProvisionedChanges.nif',
+        defaultMessage: 'nif'
+      },
       picture: {
         id: '_ProvisionedChanges.picture',
         defaultMessage: 'Picture'

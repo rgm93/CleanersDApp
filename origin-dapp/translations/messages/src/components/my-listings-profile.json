@@ -1,0 +1,62 @@
+[
+  {
+    "id": "my-listings-profile-profile.loading",
+    "defaultMessage": "Cargando..."
+  },
+  {
+    "id": "my-listings-profile-profile.no-listings",
+    "defaultMessage": "You don't have any listings yet."
+  },
+  {
+    "id": "my-listings-profile-profile.no-listings-steps",
+    "defaultMessage": "Follow the steps below to create your first listing!"
+  },
+  {
+    "id": "my-listings-profile-profile.step-one",
+    "defaultMessage": "Choose the right category for your listing."
+  },
+  {
+    "id": "my-listings-profile-profile.step-two",
+    "defaultMessage": "Give your listing a name, description, and price."
+  },
+  {
+    "id": "my-listings-profile-profile.step-three",
+    "defaultMessage": "Preview your listing and publish it to the blockchain."
+  },
+  {
+    "id": "my-listings-profile-profile.create-listing",
+    "defaultMessage": "Create Your First Listing"
+  },
+  {
+    "id": "my-listings.create-property",
+    "defaultMessage": "Publicar Vivienda"
+  },
+  {
+    "id": "my-listings-profile.myListingsHeading",
+    "defaultMessage": "Mis Viviendas"
+  },
+  {
+    "id": "my-listings-profile.all",
+    "defaultMessage": "Todas"
+  },
+  {
+    "id": "my-listings-profile.active",
+    "defaultMessage": "Activas"
+  },
+  {
+    "id": "my-listings-profile.inactive",
+    "defaultMessage": "Inactivas"
+  },
+  {
+    "id": "my-listings-profile-e.myListingsHeading",
+    "defaultMessage": "Mi Empresa"
+  },
+  {
+    "id": "my-listings-profile-e.active",
+    "defaultMessage": "Activa"
+  },
+  {
+    "id": "my-listings-profile-e.inactive",
+    "defaultMessage": "Inactiva"
+  }
+]

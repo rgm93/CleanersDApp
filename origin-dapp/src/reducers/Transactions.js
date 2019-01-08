@@ -28,7 +28,7 @@ export default function Transactions(state = initialState, action = {}) {
         return { ...t, transaction }
       })
       : [...state, transaction]
-
+  
   default:
     return state
   }

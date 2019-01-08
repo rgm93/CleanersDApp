@@ -1,0 +1,122 @@
+[
+  {
+    "id": "listing-create.housingLabelReservaVivienda",
+    "defaultMessage": "Propiedad"
+  },
+  {
+    "id": "listing-create.servicesReservaVivienda",
+    "defaultMessage": "Oferta"
+  },
+  {
+    "id": "listing-create.navigationWarningReservaVivienda",
+    "defaultMessage": "Are you sure you want to leave? If you leave this page your progress will be lost."
+  },
+  {
+    "id": "listing-create.stepNumberLabelReservaVivienda",
+    "defaultMessage": "STEP {stepNumber}"
+  },
+  {
+    "id": "listing-create.createListingHeadingReservaVivienda",
+    "defaultMessage": "Create Your Listing"
+  },
+  {
+    "id": "listing-create.showDetailsFormErrorMsgReservaVivienda",
+    "defaultMessage": "Please fix errors before continuing."
+  },
+  {
+    "id": "continueButtonLabelReservaVivienda",
+    "defaultMessage": "Continue"
+  },
+  {
+    "id": "listing-create.boost-your-listingReservaVivienda",
+    "defaultMessage": "Boost Your Listing"
+  },
+  {
+    "id": "listing-create.form-help-boostReservaVivienda",
+    "defaultMessage": "You can boost your listing to get higher visibility in the Origin DApp. More buyers will see your listing, which increases the chances of a fast and successful sale."
+  },
+  {
+    "id": "listing-create.no-ognReservaVivienda",
+    "defaultMessage": "You have 0 {ogn} in your wallet."
+  },
+  {
+    "id": "listing-create.post-acquisitionReservaVivienda",
+    "defaultMessage": "Once you acquire some OGN you will be able to boost your listing."
+  },
+  {
+    "id": "backButtonLabelReservaVivienda",
+    "defaultMessage": "Back"
+  },
+  {
+    "id": "listing-create.reviewReservaVivienda",
+    "defaultMessage": "Review"
+  },
+  {
+    "id": "listing-create.reviewListingHeadingReservaVivienda",
+    "defaultMessage": "Review your listing"
+  },
+  {
+    "id": "listing-create.titleReservaVivienda",
+    "defaultMessage": "Title"
+  },
+  {
+    "id": "listing-create.categoryReservaVivienda",
+    "defaultMessage": "Category"
+  },
+  {
+    "id": "listing-create.descriptionReservaVivienda",
+    "defaultMessage": "Description"
+  },
+  {
+    "id": "listing-create.nifReservaVivienda",
+    "defaultMessage": "NIF del Titular"
+  },
+  {
+    "id": "listing-create.phoneReservaVivienda",
+    "defaultMessage": "Teléfono del Titular"
+  },
+  {
+    "id": "listing-create.zoneReservaVivienda",
+    "defaultMessage": "Municipio"
+  },
+  {
+    "id": "listing-create.cityReservaVivienda",
+    "defaultMessage": "Provincia"
+  },
+  {
+    "id": "listing-create.listing-priceReservaVivienda",
+    "defaultMessage": "Listing Price"
+  },
+  {
+    "id": "listing-create.fractional-price-variesReservaVivienda",
+    "defaultMessage": "Price varies by date"
+  },
+  {
+    "id": "listing-create.appropriate-valueReservaVivienda",
+    "defaultMessage": "Approximate Value"
+  },
+  {
+    "id": "listing-create.boost-levelReservaVivienda",
+    "defaultMessage": "Boost Level"
+  },
+  {
+    "id": "listing-create.backButtonLabelReservaVivienda",
+    "defaultMessage": "Back"
+  },
+  {
+    "id": "listing-create.doneButtonLabelReservaVivienda",
+    "defaultMessage": "Done"
+  },
+  {
+    "id": "listing-create.error1ReservaVivienda",
+    "defaultMessage": "There was a problem creating this listing."
+  },
+  {
+    "id": "listing-create.error2ReservaVivienda",
+    "defaultMessage": "See the console for more details."
+  },
+  {
+    "id": "listing-create.OKReservaVivienda",
+    "defaultMessage": "OK"
+  }
+]

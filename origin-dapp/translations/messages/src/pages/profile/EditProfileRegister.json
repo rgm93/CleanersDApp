@@ -1,0 +1,82 @@
+[
+  {
+    "id": "EditProfile.descriptionPlaceholderRegister",
+    "defaultMessage": "¡Cuéntanos quien eres!"
+  },
+  {
+    "id": "EditProfile.firstNamePlaceholderRegister",
+    "defaultMessage": "Nombre"
+  },
+  {
+    "id": "EditProfile.lastNamePlaceholderRegister",
+    "defaultMessage": "Apellidos"
+  },
+  {
+    "id": "EditProfile.userNamePlaceholderRegister",
+    "defaultMessage": "Nombre de Usuario"
+  },
+  {
+    "id": "EditProfile.passwordPlaceholderRegister",
+    "defaultMessage": "Contraseña"
+  },
+  {
+    "id": "EditProfile.repeatPasswordPlaceholderRegister",
+    "defaultMessage": "Repetir Contraseña"
+  },
+  {
+    "id": "EditProfile.nifPlaceholderRegister",
+    "defaultMessage": "Nº Documento Identificación"
+  },
+  {
+    "id": "EditProfile.postalCodePlaceholderRegister",
+    "defaultMessage": "Código Postal"
+  },
+  {
+    "id": "EditProfile.roleNamePlaceholderRegister",
+    "defaultMessage": "¿Eres propietario o limpiador?"
+  },
+  {
+    "id": "EditProfile.editProfileHeadingRegister",
+    "defaultMessage": "Darte de alta en CleanersDApp"
+  },
+  {
+    "id": "EditProfile.firstNameRegister",
+    "defaultMessage": "Nombre"
+  },
+  {
+    "id": "EditProfile.lastNameRegister",
+    "defaultMessage": "Apellidos"
+  },
+  {
+    "id": "EditProfile.userNameRegister",
+    "defaultMessage": "Nombre de Usuario"
+  },
+  {
+    "id": "EditProfile.passwordRegister",
+    "defaultMessage": "Contraseña"
+  },
+  {
+    "id": "EditProfile.repeatPasswordRegister",
+    "defaultMessage": "Repetir Contraseña"
+  },
+  {
+    "id": "EditProfile.nifRegister",
+    "defaultMessage": "NIF"
+  },
+  {
+    "id": "EditProfile.postalCodeRegister",
+    "defaultMessage": "Código Postal"
+  },
+  {
+    "id": "EditProfile.roleNameRegister",
+    "defaultMessage": "Tipo de Usuario"
+  },
+  {
+    "id": "EditProfile.descriptionRegister",
+    "defaultMessage": "Descripción"
+  },
+  {
+    "id": "EditProfile.continueRegister",
+    "defaultMessage": "Guardar Datos"
+  }
+]

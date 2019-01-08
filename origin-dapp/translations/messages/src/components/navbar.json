@@ -1,26 +1,18 @@
 [
   {
-    "id": "navbar.listings",
-    "defaultMessage": "Listings"
-  },
-  {
-    "id": "navbar.buying",
-    "defaultMessage": "Buying"
-  },
-  {
-    "id": "navbar.selling",
-    "defaultMessage": "Selling"
-  },
-  {
     "id": "navbar.myListings",
-    "defaultMessage": "My Listings"
+    "defaultMessage": "Mis Ofertas"
   },
   {
     "id": "navbar.mySales",
-    "defaultMessage": "My Sales"
+    "defaultMessage": "Mis Ofertas Consumidas"
+  },
+  {
+    "id": "navbar.buying",
+    "defaultMessage": "Ofertas Disponibles"
   },
   {
     "id": "navbar.addListing",
-    "defaultMessage": "Add a Listing"
+    "defaultMessage": "Publicar Oferta"
   }
 ]

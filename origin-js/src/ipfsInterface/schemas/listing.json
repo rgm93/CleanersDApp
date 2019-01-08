@@ -136,6 +136,36 @@
     "description": {
       "type": "string"
     },
+    "postalCode": {
+      "type": "string"
+    },
+    "datetime": {
+      "type": "string"
+    },
+    "frequency": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "string"
+    },
+    "hours": {
+      "type": "string"
+    },
+    "haveProducts": {
+      "type": "string"
+    },
+    "nif": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "zone": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
     "media": {
       "type": "array",
       "items": {

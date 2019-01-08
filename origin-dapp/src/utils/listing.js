@@ -23,6 +23,16 @@ export function dappFormDataToOriginListing(formData) {
     language: 'en-US', // TODO(franck) Get language from DApp.
     title: formData.name,
     description: formData.description,
+    postalCode: formData.postalCode,
+    datetime:  formData.datetime,
+    frequency:  formData.frequency,
+    startDate:  formData.startDate,
+    hours:  formData.hours,
+    haveProducts:  formData.haveProducts,
+    nif: formData.nif,
+    phone: formData.phone,
+    zone:  formData.zone,
+    city:  formData.city,
     listingType: formData.listingType,
     commission: {
       amount: formData.boostValue.toString(),
@@ -84,6 +94,16 @@ export function originToDAppListing(originListing) {
     display: originListing.display,
     name: originListing.title,
     description: originListing.description,
+    postalCode: originListing.postalCode,
+    datetime:  originListing.datetime,
+    frequency:  originListing.frequency,
+    startDate:  originListing.startDate,
+    hours:  originListing.hours,
+    haveProducts:  originListing.haveProducts,
+    nif: originListing.nif,
+    phone: originListing.phone,
+    zone:  originListing.zone,
+    city:  originListing.city,
     pictures: originListing.media
       ? originListing.media.map(medium => medium.url)
       : [],

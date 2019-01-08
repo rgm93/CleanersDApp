@@ -12,8 +12,8 @@ class VerifyPhone extends Component {
     super()
     this.state = {
       mode: 'phone',
-      countryCode: 'us',
-      countryCallingCode: '1',
+      countryCode: 'es',
+      countryCallingCode: '34',
       phone: '',
       verificationCode: '',
       verificationMethod: 'sms',
@@ -178,7 +178,7 @@ class VerifyPhone extends Component {
                 values={{
                   originId: (
                     <span>
-                      Origin<sup>ID</sup>
+                      CheKin<sup>ID</sup>
                     </span>
                   )
                 }}

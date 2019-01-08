@@ -8,20 +8,72 @@
     "defaultMessage": "Examples"
   },
   {
-    "id": "schema.services.category",
-    "defaultMessage": "Category"
-  },
-  {
     "id": "schema.services.description",
     "defaultMessage": "Description"
   },
   {
+    "id": "schema.services.category",
+    "defaultMessage": "Category"
+  },
+  {
     "id": "schema.services.priceInETH",
-    "defaultMessage": "Price in ETH"
+    "defaultMessage": "Precio/Hora"
+  },
+  {
+    "id": "schema.services.propertyList",
+    "defaultMessage": "Propiedad a aplicar"
+  },
+  {
+    "id": "schema.services.postalCode",
+    "defaultMessage": "Código Postal"
+  },
+  {
+    "id": "schema.services.when",
+    "defaultMessage": "Fecha del Servicio"
+  },
+  {
+    "id": "schema.services.frequency",
+    "defaultMessage": "Frecuencia del Servicio"
+  },
+  {
+    "id": "schema.services.startDate",
+    "defaultMessage": "Comienzo del Servicio"
+  },
+  {
+    "id": "schema.services.hours",
+    "defaultMessage": "Horas a reservar"
+  },
+  {
+    "id": "schema.services.haveProducts",
+    "defaultMessage": "¿Llevas productos de limpieza?"
   },
   {
     "id": "schema.services.selectPhotos",
     "defaultMessage": "Select photos"
+  },
+  {
+    "id": "schema.services.frequency1day",
+    "defaultMessage": "Solamente 1 vez"
+  },
+  {
+    "id": "schema.services.frequencysomeday",
+    "defaultMessage": "Días consecutivos"
+  },
+  {
+    "id": "schema.services.frequencyeachweek",
+    "defaultMessage": "Cada semana"
+  },
+  {
+    "id": "schema.services.frequencyeach2weeks",
+    "defaultMessage": "Cada 2 semanas"
+  },
+  {
+    "id": "schema.services.haveProductsYes",
+    "defaultMessage": "Sí"
+  },
+  {
+    "id": "schema.services.haveProductsNo",
+    "defaultMessage": "No"
   },
   {
     "id": "schema.services.businessServices",
@@ -61,7 +113,11 @@
   },
   {
     "id": "schema.services.homeCleaning",
-    "defaultMessage": "Home Cleaning"
+    "defaultMessage": "Oferta de Vivienda"
+  },
+  {
+    "id": "schema.services.cleaningOffer",
+    "defaultMessage": "Oferta de Limpieza"
   },
   {
     "id": "schema.services.homeServices",

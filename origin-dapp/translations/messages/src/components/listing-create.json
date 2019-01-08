@@ -1,5 +1,13 @@
 [
   {
+    "id": "listing-create.housingLabel",
+    "defaultMessage": "Propiedad"
+  },
+  {
+    "id": "listing-create.services",
+    "defaultMessage": "Oferta"
+  },
+  {
     "id": "listing-create.navigationWarning",
     "defaultMessage": "Are you sure you want to leave? If you leave this page your progress will be lost."
   },
@@ -8,32 +16,12 @@
     "defaultMessage": "STEP {stepNumber}"
   },
   {
-    "id": "listing-create.whatTypeOfListing",
-    "defaultMessage": "What type of listing do you want to create?"
-  },
-  {
-    "id": "listing-create.listingsMayInclude",
-    "defaultMessage": "{schemaName} listings may include:"
-  },
-  {
-    "id": "listing-create.noSchemaSelectedError",
-    "defaultMessage": "You must first select a listing type"
-  },
-  {
-    "id": "listing-create.next",
-    "defaultMessage": "Next"
-  },
-  {
     "id": "listing-create.createListingHeading",
     "defaultMessage": "Create Your Listing"
   },
   {
     "id": "listing-create.showDetailsFormErrorMsg",
     "defaultMessage": "Please fix errors before continuing."
-  },
-  {
-    "id": "backButtonLabel",
-    "defaultMessage": "Back"
   },
   {
     "id": "continueButtonLabel",
@@ -56,6 +44,10 @@
     "defaultMessage": "Once you acquire some OGN you will be able to boost your listing."
   },
   {
+    "id": "backButtonLabel",
+    "defaultMessage": "Back"
+  },
+  {
     "id": "listing-create.review",
     "defaultMessage": "Review"
   },
@@ -74,6 +66,30 @@
   {
     "id": "listing-create.description",
     "defaultMessage": "Description"
+  },
+  {
+    "id": "listing-create.postalCode",
+    "defaultMessage": "Código Postal"
+  },
+  {
+    "id": "listing-create.dateTime",
+    "defaultMessage": "Fecha del Servicio"
+  },
+  {
+    "id": "listing-create.frequency",
+    "defaultMessage": "Frecuencia del Servicio"
+  },
+  {
+    "id": "listing-create.startDate",
+    "defaultMessage": "Comienzo del Servicio"
+  },
+  {
+    "id": "listing-create.hours",
+    "defaultMessage": "Horas a Reservar"
+  },
+  {
+    "id": "listing-create.haveProducts",
+    "defaultMessage": "¿Llevas productos de limpieza?"
   },
   {
     "id": "listing-create.listing-price",
@@ -98,54 +114,6 @@
   {
     "id": "listing-create.doneButtonLabel",
     "defaultMessage": "Done"
-  },
-  {
-    "id": "listing-create.create-a-listing",
-    "defaultMessage": "Create A Listing On The Origin DApp"
-  },
-  {
-    "id": "listing-create.form-help-schema",
-    "defaultMessage": "Get started by selecting the type of listing you want to create. You will then be able to set a price and listing details."
-  },
-  {
-    "id": "listing-create.add-details",
-    "defaultMessage": "Add Listing Details"
-  },
-  {
-    "id": "listing-create.form-help-details",
-    "defaultMessage": "Be sure to give your listing an appropriate title and description to let others know what you're offering. Adding some photos of your listing will help potential buyers decide if the want to buy your listing."
-  },
-  {
-    "id": "listing-create.about-visibility",
-    "defaultMessage": "About Visibility"
-  },
-  {
-    "id": "listing-create.form-help-visibility",
-    "defaultMessage": "Origin sorts and displays listings based on relevance, recency, and boost level. Higher-visibility listings are shown to buyers more often."
-  },
-  {
-    "id": "listing-create.origin-tokens",
-    "defaultMessage": "Origin Tokens"
-  },
-  {
-    "id": "listing-create.form-help-ogn",
-    "defaultMessage": "OGN is an ERC-20 token used for incentives and governance on the Origin platform. Future intended uses of OGN might include referral rewards, reputation incentives, spam prevention, developer rewards, and platform governance."
-  },
-  {
-    "id": "listing-create.learn-more",
-    "defaultMessage": "Learn More"
-  },
-  {
-    "id": "listing-create.whatHappensNextHeading",
-    "defaultMessage": "What happens next?"
-  },
-  {
-    "id": "listing-create.whatHappensNextContent1",
-    "defaultMessage": "When you submit this listing, you will be asked to confirm your transaction in MetaMask. Buyers will then be able to see your listing and make offers on it."
-  },
-  {
-    "id": "listing-create.whatHappensNextContent2",
-    "defaultMessage": "{selectedBoostAmount} OGN will be transferred for boosting. If you close your listing before accepting an offer, the OGN will be refunded to you."
   },
   {
     "id": "listing-create.updateSuccessMessage",
@@ -174,10 +142,6 @@
   {
     "id": "listing-create.success-4",
     "defaultMessage": "You will receive payment once the buyer confirms that the order has been fulfilled."
-  },
-  {
-    "id": "listing-create.createAnother",
-    "defaultMessage": "Create Another Listing"
   },
   {
     "id": "listing-create.seeAllListings",

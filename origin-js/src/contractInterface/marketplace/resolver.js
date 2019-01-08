@@ -123,6 +123,16 @@ export default class MarketplaceResolver {
     )
   }
 
+  async withoutdrawListing(listingId, ipfsBytes, confirmationCallback) {
+    const { adapter, listingIndex } = this.parseListingId(listingId)
+
+    return await adapter.withoutdrawListing(
+      listingIndex,
+      ipfsBytes,
+      confirmationCallback
+    )
+  }
+
   async makeOffer(listingId, ipfsBytes, offerData, confirmationCallback) {
     const { adapter, listingIndex, version, network } = this.parseListingId(
       listingId

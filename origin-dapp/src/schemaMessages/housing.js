@@ -3,7 +3,7 @@ import { defineMessages } from 'react-intl'
 export default defineMessages({
   'schema.housing.title': {
     id: 'schema.housing.title',
-    defaultMessage: 'Title'
+    defaultMessage: 'Nombre'
   },
   'schema.housing.examples': {
     id: 'schema.housing.examples',
@@ -15,7 +15,23 @@ export default defineMessages({
   },
   'schema.housing.description': {
     id: 'schema.housing.description',
-    defaultMessage: 'Description'
+    defaultMessage: 'Dirección'
+  },
+  'schema.housing.NIF': {
+    id: 'schema.housing.NIF',
+    defaultMessage: 'NIF Titular'
+  },
+  'schema.housing.phone': {
+    id: 'schema.housing.phone',
+    defaultMessage: 'Teléfono Titular'
+  },
+  'schema.housing.zone': {
+    id: 'schema.housing.zone',
+    defaultMessage: 'Municipio'
+  },
+  'schema.housing.city': {
+    id: 'schema.housing.city',
+    defaultMessage: 'Provincia'
   },
   'schema.housing.priceInETH': {
     id: 'schema.housing.priceInETH',
@@ -55,7 +71,11 @@ export default defineMessages({
   },
   'schema.housing.vacationRentals': {
     id: 'schema.housing.vacationRentals',
-    defaultMessage: 'Vacation Rentals'
+    defaultMessage: 'Vivienda'
+  },
+  'schema.housing.businessRentals': {
+    id: 'schema.housing.bussinessRentals',
+    defaultMessage: 'Empresa'
   },
   'schema.housing.messageBuyer': {
     id: 'schema.housing.messageBuyer',

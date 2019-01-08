@@ -101,6 +101,7 @@ class WalletCard extends Component {
     } = this.props
     const user = users.find(u => formattedAddress(u.address) === formattedAddress(wallet.address)) || {}
     const { attestations = [], fullName, profile = {} } = user
+    const roleName = this.props.provisional.roleName === "Owner" ? "Propietario" : (this.props.provisional.roleName === "Cleaner" ? "Limpiador" : "")
     const { address, ethBalance, ognBalance } = wallet
     const ethToUsdBalance = getFiatPrice(
       wallet.ethBalance,
@@ -293,7 +294,9 @@ class WalletCard extends Component {
                 </Link>
                 <div className="identification d-flex flex-column justify-content-between">
                   <div>
-                    <Link to="/profile">{fullName || <UnnamedUser />}</Link>
+                    <Link to="/profile">
+                      {fullName + "  (" + roleName + ")  " || <UnnamedUser />}
+                    </Link>
                   </div>
                   {!!attestations.length && (
                     <div className="attestations">
@@ -361,7 +364,7 @@ class WalletCard extends Component {
   }
 }
 
-const mapStateToProps = ({ activation, exchangeRates, users, wallet }) => {
+const mapStateToProps = ({ activation, exchangeRates, users, profile, wallet }) => {
   return {
     exchangeRates,
     // for reactivity
@@ -369,7 +372,9 @@ const mapStateToProps = ({ activation, exchangeRates, users, wallet }) => {
     // for reactivity
     messagingInitialized: activation.messaging.initialized,
     users,
-    wallet
+    wallet,
+    provisional: profile.provisional,
+    profile: profile
   }
 }
 

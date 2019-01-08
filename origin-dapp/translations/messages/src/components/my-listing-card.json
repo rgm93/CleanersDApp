@@ -1,14 +1,22 @@
 [
   {
     "id": "my-listing-card.confirmCloseListing",
-    "defaultMessage": "Are you sure that you want to permanently close this listing? This cannot be undone."
+    "defaultMessage": "¿Quieres deshabilitar el anuncio?"
+  },
+  {
+    "id": "my-listing-card.confirmOpenListing",
+    "defaultMessage": "¿Quieres volver a publicar el anuncio?"
   },
   {
     "id": "my-listing-card.editListing",
-    "defaultMessage": "Edit Listing"
+    "defaultMessage": "Editar oferta"
   },
   {
     "id": "my-listing-card.closeListing",
-    "defaultMessage": "Close Listing"
+    "defaultMessage": "Cerrar oferta"
+  },
+  {
+    "id": "my-listing-card.openListing",
+    "defaultMessage": "Abrir oferta"
   }
 ]

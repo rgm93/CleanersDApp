@@ -12,14 +12,14 @@ class VerifierServices extends Component {
             defaultMessage={'Powered by'}
           />{' '}
           <span className="logo">
-            Origin<sup>ID</sup>
+            CheKin<sup>ID</sup>
           </span>
         </p>
         <p className="directive">
           <FormattedMessage
             id={'_Services.pleaseConnectAccounts'}
             defaultMessage={
-              'Please connect your accounts below to strengthen your identity on Origin.'
+              'Conecta tu nueva cuenta con los siguientes servicios para reforzar la identidad en CheKin.'
             }
           />
         </p>

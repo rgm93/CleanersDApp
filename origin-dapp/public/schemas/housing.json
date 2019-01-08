@@ -1,7 +1,7 @@
 {
   "$schema":"http://json-schema.org/draft-06/schema#",
   "type": "object",
-  "required": ["name","category","description"],
+  "required": ["name","category","description", "nif", "phone", "zone", "city"],
   "properties": {
     "name": {
       "type": "string",
@@ -13,8 +13,6 @@
       "type": "string",
       "title": "schema.housing.examples",
       "enum": [
-        "schema.housing.aptsHousingForRent",
-        "schema.housing.roomShares",
         "schema.housing.vacationRentals"
       ]
     },
@@ -22,13 +20,7 @@
       "type": "string",
       "title": "schema.housing.category",
       "enum": [
-        "schema.housing.aptsHousingForRent",
-        "schema.housing.officeCommercial",
-        "schema.housing.other",
-        "schema.housing.parkingStorage",
-        "schema.housing.realEstate",
-        "schema.housing.roomShares",
-        "schema.housing.subletsTemporary",
+        "schema.housing.businessRentals",
         "schema.housing.vacationRentals"
       ],
       "default":"schema.housing.vacationRentals"
@@ -37,12 +29,31 @@
       "type": "string",
       "title": "schema.housing.description",
       "minLength": 10,
-      "maxLength": 1024
+      "maxLength": 100
     },
-    "price": {
-      "type": "number",
-      "title": "schema.housing.priceInETH"
+    "nif": {
+      "type": "string",
+      "title": "schema.housing.NIF",
+      "minLength": 3,
+      "maxLength": 10
     },
+    "phone": {
+      "type": "string",
+      "title": "schema.housing.phone"
+    },
+    "zone": {
+      "type": "string",
+      "title": "schema.housing.zone",
+      "minLength": 3,
+      "maxLength": 50
+    },
+    "city": {
+      "type": "string",
+      "title": "schema.housing.city",
+      "minLength": 3,
+      "maxLength": 50
+    },
+    "price": {},
     "pictures": {
       "type": "array",
       "title": "schema.housing.selectPhotos",

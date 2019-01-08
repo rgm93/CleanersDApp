@@ -10,6 +10,11 @@ const initialState = {
     firstName: '',
     lastName: '',
     description: '',
+    roleName: '',
+    username: '',
+    password: '',
+    postalCode: '',
+    nif: '',
     pic: '',
     email: false,
     facebook: false,
@@ -21,6 +26,11 @@ const initialState = {
     firstName: '',
     lastName: '',
     description: '',
+    roleName: '',
+    username: '',
+    password: '',
+    postalCode: '',
+    nif: '',
     pic: '',
     email: false,
     facebook: false,
@@ -40,8 +50,13 @@ initialState.provisional = { ...initialState.published }
 
 const progressPct = {
   firstName: 15,
-  lastName: 15,
+  lastName: 30,
   description: 10,
+  roleName: 10,
+  username: 10,
+  password: 30,
+  postalCode: 10,
+  nif: 10,
   email: 15,
   phone: 15,
   facebook: 10,
@@ -91,6 +106,11 @@ function unpackUser(state) {
     firstName = profile.firstName,
     lastName = profile.lastName,
     description = profile.description,
+    roleName = profile.roleName,
+    username = profile.username,
+    password = profile.password,
+    postalCode = profile.postalCode,
+    nif = profile.nif,
     pic = profile.avatar
 
   if (firstName) {
@@ -101,6 +121,21 @@ function unpackUser(state) {
   }
   if (description) {
     state.provisional.description = state.published.description = description
+  }
+  if (roleName) {
+    state.provisional.roleName = state.published.roleName = roleName
+  }
+  if (username) {
+    state.provisional.username = state.published.username = username
+  }
+  if (password) {
+    state.provisional.password = state.published.password = password
+  }
+  if (postalCode) {
+    state.provisional.postalCode = state.published.postalCode = postalCode
+  }
+  if (nif) {
+    state.provisional.nif = state.published.nif = nif
   }
   if (pic) {
     state.provisional.pic = state.published.pic = pic

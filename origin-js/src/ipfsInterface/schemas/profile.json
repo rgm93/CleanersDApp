@@ -16,6 +16,21 @@
     "description": {
       "type": "string"
     },
+    "roleName": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string"
+    },
+    "nif": {
+      "type": "string"
+    },
     "avatar": {
       "type": "string"
     }
@@ -23,6 +38,11 @@
   "required": [
     "schemaId",
     "firstName",
-    "lastName"
+    "lastName",
+    "roleName",
+    "username",
+    "password",
+    "postalCode",
+    "nif"
   ]
 }

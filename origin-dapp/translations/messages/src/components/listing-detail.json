@@ -61,11 +61,11 @@
   },
   {
     "id": "listing-detail.myListings",
-    "defaultMessage": "My Listings"
+    "defaultMessage": "Mis ofertas"
   },
   {
     "id": "listing-detail.editListings",
-    "defaultMessage": "Edit Listing"
+    "defaultMessage": "Editar oferta"
   },
   {
     "id": "listing-detail.reasonPending",
@@ -89,7 +89,7 @@
   },
   {
     "id": "listing-detail.viewListings",
-    "defaultMessage": "View Listings"
+    "defaultMessage": "Ver ofertas"
   },
   {
     "id": "listing-detail.suggestionBuyerCreated",

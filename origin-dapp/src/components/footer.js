@@ -61,13 +61,14 @@ class Footer extends Component {
           <div className="row">
             <div className="col-12 col-lg-6">
               <div className="logo-container">
-                <a href="https://www.originprotocol.com"
+                <a href="https://protocol.chekin.io"
                   target="_blank"
                   rel="noopener noreferrer">
                   <img
                     src="images/origin-logo-footer.svg"
                     className="origin-logo"
                     alt="Origin Protocol"
+                    style={{width: "150px"}}
                   />
                 </a>
                 <div className="vl"></div>
@@ -76,13 +77,13 @@ class Footer extends Component {
                     <FormattedMessage
                       id={'footer.description'}
                       defaultMessage={
-                        'The Origin decentralized app allows buyers and sellers to transact without rent-seeking middlemen using the Ethereum blockchain and IPFS.'
+                        'The CheKin decentralized app allows owners and cleaners to transact without rent-seeking middlemen using the Ethereum blockchain and IPFS.'
                       }
                     />
                   </p>
-                  <p>&copy; {new Date().getFullYear()} Origin Protocol, Inc.</p>
+                  <p>&copy; {new Date().getFullYear()} CheKin Protocol</p>
                 </div>
-              </div> 
+              </div>
             </div>
             <div className="col-12 col-lg-6">
               <div className="d-lg-flex footer-links-container justify-content-between">
@@ -136,27 +137,27 @@ class Footer extends Component {
                 </div>
                 <div className="d-lg-inline-block link-container">
                   <a
-                    href="https://www.originprotocol.com"
+                    href="https://protocol.chekin.io"
                     className="footer-link"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <FormattedMessage
                       id={'footer.websiteLink'}
-                      defaultMessage={'Visit our Website'}
+                      defaultMessage={'Visit our Protocol Website'}
                     />
                   </a>
                 </div>
                 <div className="d-lg-inline-block link-container">
                   <a
-                    href="https://github.com/OriginProtocol"
+                    href="https://tools.chekin.io"
                     className="footer-link"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <FormattedMessage
                       id={'footer.githubLink'}
-                      defaultMessage={'Visit our Github'}
+                      defaultMessage={'Visit our Tools Website'}
                     />
                   </a>
                 </div>

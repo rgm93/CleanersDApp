@@ -47,15 +47,15 @@ class ListingCreate extends Component {
     super(props)
 
     this.STEP = {
-      PICK_SCHEMA: 1,
-      DETAILS: 2,
-      AVAILABILITY: 3,
-      BOOST: 4,
-      PREVIEW: 5,
-      METAMASK: 6,
-      PROCESSING: 7,
-      SUCCESS: 8,
-      ERROR: 9
+      PICK_SCHEMA: 0,
+      DETAILS: 1,
+      AVAILABILITY: 2,
+      BOOST: 3,
+      PREVIEW: 4,
+      METAMASK: 5,
+      PROCESSING: 6,
+      SUCCESS: 7,
+      ERROR: 8
     }
 
     // TODO(John) - remove once fractional usage is enabled by default
@@ -68,15 +68,39 @@ class ListingCreate extends Component {
       ]
     }
 
-    this.schemaList = listingSchemaMetadata.listingTypes.map(listingType => {
+    const schemaTypeLabels = defineMessages({
+      housing: {
+        id: 'listing-create.housingLabel',
+        defaultMessage: 'Propiedad'
+      },
+      services: {
+        id: 'listing-create.services',
+        defaultMessage: 'Oferta'
+      }
+    })
+
+    this.schemaList = [
+      {type: 'housing', name: props.intl.formatMessage(schemaTypeLabels.housing), img: 'housing.jpg'},
+      {type: 'services', name: props.intl.formatMessage(schemaTypeLabels.services), img: 'services.jpg'},
+    ]
+
+    /*this.schemaList = listingSchemaMetadata.listingTypes.map(listingType => {
       listingType.name = props.intl.formatMessage(listingType.translationName)
       return listingType
-    })
+    })*/
+
+    this.state = {
+      filter: 'all',
+      listings: [],
+      listingsNames: [],
+      loading: true,
+      processing: false
+    }
 
     this.defaultState = {
       step: this.STEP.PICK_SCHEMA,
       selectedBoostAmount: props.wallet.ognBalance ? defaultBoostValue : 0,
-      selectedSchemaType: null,
+      selectedSchemaType: 'services',
       translatedSchema: null,
       schemaExamples: null,
       schemaFetched: false,
@@ -121,7 +145,7 @@ class ListingCreate extends Component {
 
   async componentDidMount() {
     // If listingId prop is passed in, we're in edit mode, so fetch listing data
-    if (this.props.listingId) {
+    /*if (this.props.listingId) {
       this.props.storeWeb3Intent('edit a listing')
 
       try {
@@ -151,7 +175,11 @@ class ListingCreate extends Component {
         this.props.history.push('/')
       }
       this.props.storeWeb3Intent('create a listing')
-    }
+    }*/
+
+    this.loadListings();
+    this.loadListingsNames();
+    this.handleSchemaSelection('services');
   }
 
   ensureUserIsSeller(sellerAccount) {
@@ -202,17 +230,78 @@ class ListingCreate extends Component {
     }, 10000)
   }
 
-  handleSchemaSelection(selectedSchemaType) {
+  async loadListingsNames() {
+    try {
+      const { listings } = this.state
+      const listingsNames = await Promise.all(
+        listings.map(list => {
+          return getListing(list.title, true)
+        })
+      );
+
+      this.setState({ listingsNames, loading: false })
+
+      console.log("LELELE: " + JSON.stringify(listingsNames));
+    } catch (error) {
+      console.error('Error fetching listing ids')
+    }
+  }
+
+  async loadListings() {
+    try {
+      const ids = await origin.marketplace.getListings({
+        idsOnly: true,
+        listingsFor: this.props.wallet.address
+      })
+      const listings2 = await Promise.all(
+        ids.map(id => {
+          return getListing(id, true)
+        })
+      );
+
+      var categoryPer = this.props.provisional.roleName === "Owner" ? "Alquileres Vacacionales" : "Empresa";
+      
+      const listings = await Promise.all(listings2.filter(list => list.category === categoryPer));
+
+      this.setState({ listings, loading: false })
+    } catch (error) {
+      console.error('Error fetching listing ids')
+    }
+  }
+  
+  async handleSchemaSelection(selectedSchemaType) {
     const isFractionalListing = this.fractionalSchemaTypes.includes(selectedSchemaType)
+    const roleName = this.props.provisional.roleName;
+
+    console.log("ROLENAME:" + JSON.stringify(roleName));
+    console.log("LSNAMES: " + JSON.stringify(this.state.listingsNames))
+    if(!roleName) {
+      alert("Actualiza tu rol en el perfil")
+      return;
+    }
 
     return fetch(`schemas/${selectedSchemaType}.json`)
       .then(response => response.json())
       .then(schemaJson => {
+        if (roleName == 'Owner'){
+          schemaJson.properties.category.default = schemaJson.properties.category.enum[1];
+          schemaJson.properties.category.enum = [schemaJson.properties.category.enum[1]];
+        } else if (roleName == 'Cleaner') {
+          schemaJson.properties.category.default = schemaJson.properties.category.enum[0];
+          schemaJson.properties.category.enum = [schemaJson.properties.category.enum[0]];
+        }
+
+        schemaJson.properties.propertyList = this.state.listingsNames;
+        
+        //schemaJson.properties.postalCode = this.props.provisional.postalCode
+        //console.log("CODIGO_POSTAL: " + JSON.stringify(this.props.provisional.postalCode))
+
         PriceField.defaultProps = {
           options: {
             selectedSchema: schemaJson
           }
         }
+
         this.uiSchema = {
           examples: {
             'ui:widget': 'hidden'
@@ -245,7 +334,7 @@ class ListingCreate extends Component {
         this.setState({
           selectedSchemaType,
           schemaFetched: true,
-          fractionalTimeIncrement: !isFractionalListing ? null : 
+          fractionalTimeIncrement: !isFractionalListing ? null :
             selectedSchemaType === 'housing' ? 'daily' : 'hourly',
           showNoSchemaSelectedError: false,
           translatedSchema,
@@ -256,6 +345,13 @@ class ListingCreate extends Component {
             translatedSchema.properties.examples &&
             translatedSchema.properties.examples.enumNames
         })
+
+        if (this.state.schemaFetched) {
+          this.setState({
+            step: this.STEP.DETAILS
+          })
+          window.scrollTo(0, 0)
+        }
       })
   }
 
@@ -315,6 +411,7 @@ class ListingCreate extends Component {
       schemaFetched: false,
       formData: null
     })
+    this.resetForm();
   }
 
   backFromBoostStep() {
@@ -330,6 +427,7 @@ class ListingCreate extends Component {
         [this.STEP.BOOST, 'unit']
 
     formListing.formData.listingType = listingType
+    //formListing.formData.postalCode = this.props.provisional.postalCode
 
     this.setState({
       formListing: {
@@ -343,6 +441,8 @@ class ListingCreate extends Component {
       step: nextStep,
       showDetailsFormErrorMsg: false
     })
+
+    console.log("ONDETAILSENTERED_FORM: " + JSON.stringify(formListing));
     window.scrollTo(0, 0)
     this.checkOgnBalance()
   }
@@ -472,13 +572,15 @@ class ListingCreate extends Component {
     } = this.state
     const { formData } = formListing
     const translatedCategory = translateListingCategory(formData.category)
+    const translatedFrequency = translateListingCategory(formData.frequency)
+    const translatedHaveProduct = translateListingCategory(formData.haveProducts)
     const usdListingPrice = getFiatPrice(formListing.formData.price, 'USD')
 
     return (web3.givenProvider || origin.contractService.walletLinker) ? (
       <div className="listing-form">
         <div className="step-container">
           <div className="row">
-            {step === this.STEP.PICK_SCHEMA && (
+            {/*{step === this.STEP.PICK_SCHEMA && (
               <div className="col-md-6 col-lg-5 pick-schema">
                 <label>
                   <FormattedMessage
@@ -559,9 +661,9 @@ class ListingCreate extends Component {
                   </button>
                 </div>
               </div>
-            )}
+            )}*/}
             {step === this.STEP.DETAILS && (
-              <div className="col-md-6 col-lg-5 schema-details">
+              <div className="col-md-12 col-lg-12 schema-details">
                 <label>
                   <FormattedMessage
                     id={'listing-create.stepNumberLabel'}
@@ -598,20 +700,6 @@ class ListingCreate extends Component {
                     </div>
                   )}
                   <div className="btn-container">
-                    <button
-                      type="button"
-                      className="btn btn-other btn-listing-create"
-                      onClick={() =>
-                        this.onBackToPickSchema()
-                      }
-                      ga-category="create_listing"
-                      ga-label="details_step_back"
-                    >
-                      <FormattedMessage
-                        id={'backButtonLabel'}
-                        defaultMessage={'Back'}
-                      />
-                    </button>
                     <button
                       type="submit"
                       className="float-right btn btn-primary btn-listing-create"
@@ -740,7 +828,7 @@ class ListingCreate extends Component {
               </div>
             )}
             {step >= this.STEP.PREVIEW && (
-              <div className="col-md-7 col-lg-8 listing-preview">
+              <div className="col-md-12 col-lg-12 listing-preview">
                 <label className="create-step">
                   <FormattedMessage
                     id={'listing-create.stepNumberLabel'}
@@ -792,6 +880,84 @@ class ListingCreate extends Component {
                     </div>
                     <div className="col-md-9">
                       <p className="ws-aware">{formData.description}</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-3">
+                      <p className="label">
+                        <FormattedMessage
+                          id={'listing-create.postalCode'}
+                          defaultMessage={'Código Postal'}
+                        />
+                      </p>
+                    </div>
+                    <div className="col-md-9">
+                      <p>{formData.postalCode}</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-3">
+                      <p className="label">
+                        <FormattedMessage
+                          id={'listing-create.dateTime'}
+                          defaultMessage={'Fecha del Servicio'}
+                        />
+                      </p>
+                    </div>
+                    <div className="col-md-9">
+                      <p>{formData.datetime}</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-3">
+                      <p className="label">
+                        <FormattedMessage
+                          id={'listing-create.frequency'}
+                          defaultMessage={'Frecuencia del Servicio'}
+                        />
+                      </p>
+                    </div>
+                    <div className="col-md-9">
+                      <p>{translatedFrequency}</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-3">
+                      <p className="label">
+                        <FormattedMessage
+                          id={'listing-create.startDate'}
+                          defaultMessage={'Comienzo del Servicio'}
+                        />
+                      </p>
+                    </div>
+                    <div className="col-md-9">
+                      <p>{formData.startDate}</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-3">
+                      <p className="label">
+                        <FormattedMessage
+                          id={'listing-create.hours'}
+                          defaultMessage={'Horas a Reservar'}
+                        />
+                      </p>
+                    </div>
+                    <div className="col-md-9">
+                      <p>{formData.hours}</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-3">
+                      <p className="label">
+                        <FormattedMessage
+                          id={'listing-create.haveProducts'}
+                          defaultMessage={'¿Llevas productos de limpieza?'}
+                        />
+                      </p>
+                    </div>
+                    <div className="col-md-9">
+                      <p>{translatedHaveProduct}</p>
                     </div>
                   </div>
                   <div className="row">
@@ -946,123 +1112,7 @@ class ListingCreate extends Component {
                 </div>
               </div>
             )}
-            {step !== this.STEP.AVAILABILITY &&
-              <div
-                className={`pt-xs-4 pt-sm-4 col-md-5 col-lg-4${
-                  step >= this.STEP.PREVIEW ? '' : ' offset-md-1 offset-lg-3'
-                }`}
-              >
-                <WalletCard
-                  wallet={wallet}
-                  withBalanceTooltip={!this.props.wallet.ognBalance}
-                  withMenus={true}
-                  withProfile={false}
-                />
-                {step === this.STEP.PICK_SCHEMA && (
-                  <div className="info-box">
-                    <h2>
-                      <FormattedMessage
-                        id={'listing-create.create-a-listing'}
-                        defaultMessage={'Create A Listing On The Origin DApp'}
-                      />
-                    </h2>
-                    <p>
-                      <FormattedMessage
-                        id={'listing-create.form-help-schema'}
-                        defaultMessage={`Get started by selecting the type of listing you want to create. You will then be able to set a price and listing details.`}
-                      />
-                    </p>
-                  </div>
-                )}
-                {step === this.STEP.DETAILS && (
-                  <div className="info-box">
-                    <h2>
-                      <FormattedMessage
-                        id={'listing-create.add-details'}
-                        defaultMessage={'Add Listing Details'}
-                      />
-                    </h2>
-                    <p>
-                      <FormattedMessage
-                        id={'listing-create.form-help-details'}
-                        defaultMessage={`Be sure to give your listing an appropriate title and description to let others know what you're offering. Adding some photos of your listing will help potential buyers decide if the want to buy your listing.`}
-                      />
-                    </p>
-                  </div>
-                )}
-                {step === this.STEP.BOOST && (
-                  <div className="info-box">
-                    <h2>
-                      <FormattedMessage
-                        id={'listing-create.about-visibility'}
-                        defaultMessage={'About Visibility'}
-                      />
-                    </h2>
-                    <p>
-                      <FormattedMessage
-                        id={'listing-create.form-help-visibility'}
-                        defaultMessage={`Origin sorts and displays listings based on relevance, recency, and boost level. Higher-visibility listings are shown to buyers more often.`}
-                      />
-                    </p>
-                    <h2>
-                      <FormattedMessage
-                        id={'listing-create.origin-tokens'}
-                        defaultMessage={'Origin Tokens'}
-                      />
-                    </h2>
-                    <p>
-                      <FormattedMessage
-                        id={'listing-create.form-help-ogn'}
-                        defaultMessage={`OGN is an ERC-20 token used for incentives and governance on the Origin platform. Future intended uses of OGN might include referral rewards, reputation incentives, spam prevention, developer rewards, and platform governance.`}
-                      />
-                    </p>
-                    <div className="link-container">
-                      <Link
-                        to="/about-tokens"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <FormattedMessage
-                          id={'listing-create.learn-more'}
-                          defaultMessage={'Learn More'}
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                )}
-                {step >= this.STEP.PREVIEW && (
-                  <div className="info-box">
-                    <div>
-                      <h2>
-                        <FormattedMessage
-                          id={'listing-create.whatHappensNextHeading'}
-                          defaultMessage={'What happens next?'}
-                        />
-                      </h2>
-                      <FormattedMessage
-                        id={'listing-create.whatHappensNextContent1'}
-                        defaultMessage={
-                          'When you submit this listing, you will be asked to confirm your transaction in MetaMask. Buyers will then be able to see your listing and make offers on it.'
-                        }
-                      />
-                      {!!selectedBoostAmount && (
-                        <div className="boost-reminder">
-                          <FormattedMessage
-                            id={'listing-create.whatHappensNextContent2'}
-                            defaultMessage={
-                              '{selectedBoostAmount} OGN will be transferred for boosting. If you close your listing before accepting an offer, the OGN will be refunded to you.'
-                            }
-                            values={{
-                              selectedBoostAmount
-                            }}
-                          />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
-            }
+            
             {step === this.STEP.METAMASK && <ProviderModal />}
             {step === this.STEP.PROCESSING && <ProcessingModal />}
             {step === this.STEP.SUCCESS && (
@@ -1132,19 +1182,8 @@ class ListingCreate extends Component {
                   </ul>
                 </div>
                 <div className="button-container">
-                  <button
-                    className="btn btn-clear"
-                    onClick={this.resetForm}
-                    ga-category="create_listing"
-                    ga-label="listing_creation_confirmation_modal_create_another_listing_cta"
-                  >
-                    <FormattedMessage
-                      id={'listing-create.createAnother'}
-                      defaultMessage={'Create Another Listing'}
-                    />
-                  </button>
                   <Link
-                    to="/"
+                    to="/home"
                     className="btn btn-clear"
                     ga-category="create_listing"
                     ga-label="listing_creation_confirmation_modal_see_all_listings"
@@ -1197,14 +1236,16 @@ class ListingCreate extends Component {
   }
 }
 
-const mapStateToProps = ({ activation, app, exchangeRates, wallet }) => {
+const mapStateToProps = ({ activation, profile, app, exchangeRates, wallet }) => {
   return {
     exchangeRates,
     messagingEnabled: activation.messaging.enabled,
     pushNotificationsSupported: activation.notifications.pushEnabled,
     serviceWorkerRegistration: activation.notifications.serviceWorkerRegistration,
     wallet,
-    web3Intent: app.web3.intent
+    web3Intent: app.web3.intent,
+    provisional: profile.provisional,
+    profile: profile
   }
 }
 

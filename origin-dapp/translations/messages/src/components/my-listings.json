@@ -33,14 +33,14 @@
   },
   {
     "id": "my-listings.all",
-    "defaultMessage": "All"
+    "defaultMessage": "Todas"
   },
   {
     "id": "my-listings.active",
-    "defaultMessage": "Active"
+    "defaultMessage": "Activas"
   },
   {
     "id": "my-listings.inactive",
-    "defaultMessage": "Inactive"
+    "defaultMessage": "Inactivas"
   }
 ]

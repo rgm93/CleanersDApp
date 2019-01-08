@@ -1,0 +1,30 @@
+[
+  {
+    "id": "LoginUsuario.userNamePlaceholder",
+    "defaultMessage": "Usuario"
+  },
+  {
+    "id": "LoginUsuario.passwordPlaceholder",
+    "defaultMessage": "Contraseña"
+  },
+  {
+    "id": "LoginUsuario.editProfileHeadingRegister",
+    "defaultMessage": "Accede a CleanersDApp"
+  },
+  {
+    "id": "LoginUsuario.userName",
+    "defaultMessage": "Usuario"
+  },
+  {
+    "id": "LoginUser.passwordRegister",
+    "defaultMessage": "Contraseña"
+  },
+  {
+    "id": "LoginUsuario.continueRegister",
+    "defaultMessage": "Acceder"
+  },
+  {
+    "id": "LoginUsuario.register",
+    "defaultMessage": "¿No tienes cuenta en CleanersDApp? ¡Hazte una!"
+  }
+]

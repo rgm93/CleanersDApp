@@ -9,12 +9,17 @@ class EditProfile extends Component {
     super(props)
     this.nameRef = React.createRef()
 
-    const { pic, firstName, lastName, description, } = this.props.data
+    const { pic, firstName, lastName, description, roleName, username, password, postalCode, nif } = this.props.data
     this.state = {
       pic,
       firstName,
       lastName,
-      description
+      description,
+      roleName,
+      username,
+      password,
+      postalCode,
+      nif
     }
 
     this.intlMessages = defineMessages({
@@ -29,7 +34,27 @@ class EditProfile extends Component {
       lastNamePlaceholder: {
         id: 'EditProfile.lastNamePlaceholder',
         defaultMessage: 'Your Last Name'
-      }
+      },
+      roleNamePlaceholder: {
+        id: 'EditProfile.roleNamePlaceholder',
+        defaultMessage: 'Your role'
+      },
+      usernamePlaceholder: {
+        id: 'EditProfile.usernamePlaceholder',
+        defaultMessage: 'Usuario'
+      },
+      passwordPlaceholder: {
+        id: 'EditProfile.passwordPlaceholder',
+        defaultMessage: 'Contraseña'
+      },
+      postalCodePlaceholder: {
+        id: 'EditProfile.postalCodePlaceholder',
+        defaultMessage: 'Código Postal'
+      },
+      nifPlaceholder: {
+        id: 'EditProfile.nifPlaceholder',
+        defaultMessage: 'NIF/DNI'
+      },
     })
   }
 
@@ -59,6 +84,18 @@ class EditProfile extends Component {
     })
   }
 
+  comprobarDatos() {
+    var comprobar = false;
+
+    if(this.state.firstName !== '' && this.state.lastName !== '' && 
+       this.state.description !== '' && this.state.username !== '' && 
+       this.state.password !== '' && this.state.nif !== '' && 
+       this.state.postalCode !== '') {
+        comprobar = true;
+    }
+    return comprobar;
+  }
+
   render() {
     const { intl, open, handleToggle } = this.props
 
@@ -81,7 +118,12 @@ class EditProfile extends Component {
             const data = {
               firstName: this.state.firstName,
               lastName: this.state.lastName,
-              description: this.state.description
+              description: this.state.description,
+              roleName: this.state.roleName,
+              username: this.state.username,
+              password: this.state.password,
+              nif: this.state.nif,
+              postalCode: this.state.postalCode
             }
             this.props.handleSubmit({ data })
           }}
@@ -119,7 +161,7 @@ class EditProfile extends Component {
                   <label htmlFor="first-name">
                     <FormattedMessage
                       id={'EditProfile.firstName'}
-                      defaultMessage={'First Name'}
+                      defaultMessage={'Nombre'}
                     />
                   </label>
                   <input
@@ -134,13 +176,15 @@ class EditProfile extends Component {
                     placeholder={intl.formatMessage(
                       this.intlMessages.firstNamePlaceholder
                     )}
+                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"
+                    required
                   />
                 </div>
                 <div className="form-group">
                   <label htmlFor="last-name">
                     <FormattedMessage
                       id={'EditProfile.lastName'}
-                      defaultMessage={'Last Name'}
+                      defaultMessage={'Apellidos'}
                     />
                   </label>
                   <input
@@ -155,9 +199,108 @@ class EditProfile extends Component {
                     placeholder={intl.formatMessage(
                       this.intlMessages.lastNamePlaceholder
                     )}
+                    pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}"
+                    required
                   />
                 </div>
               </div>
+              <div className="col-12">
+              <div className="form-group">
+                <label htmlFor="username">
+                  <FormattedMessage
+                    id={'EditProfile.username'}
+                    defaultMessage={'Username'}
+                  />
+                </label>
+                <input
+                  type="text"
+                  name="username"
+                  className="form-control"
+                  value={this.state.username}
+                  onChange={e =>
+                    this.setState({ username: e.currentTarget.value })
+                  }
+                  placeholder={intl.formatMessage(
+                    this.intlMessages.usernamePlaceholder
+                  )}
+                  pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,20}$"
+                  required
+                />
+              </div>
+              </div>
+              <div className="col-12">
+              <div className="form-group">
+                <label htmlFor="password">
+                  <FormattedMessage
+                    id={'EditProfile.password'}
+                    defaultMessage={'Password'}
+                  />
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  className="form-control"
+                  value={this.state.password}
+                  onChange={e =>
+                    this.setState({ password: e.currentTarget.value })
+                  }
+                  placeholder={intl.formatMessage(
+                    this.intlMessages.passwordPlaceholder
+                  )}
+                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
+                  required
+                />
+              </div>
+              </div>
+              <div className="col-12">
+              <div className="form-group">
+                <label htmlFor="nif">
+                  <FormattedMessage
+                    id={'EditProfile.nif'}
+                    defaultMessage={'NIF'}
+                  />
+                </label>
+                <input
+                  type="text"
+                  name="nif"
+                  className="form-control"
+                  value={this.state.nif}
+                  onChange={e =>
+                    this.setState({ nif: e.currentTarget.value })
+                  }
+                  placeholder={intl.formatMessage(
+                    this.intlMessages.nifPlaceholder
+                  )}
+                  pattern="(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))"
+                  required
+                />
+              </div>
+              </div>
+              <div className="col-12">
+              <div className="form-group">
+                <label htmlFor="postalCode">
+                  <FormattedMessage
+                    id={'EditProfile.postalCode'}
+                    defaultMessage={'Postal Code'}
+                  />
+                </label>
+                <input
+                  type="text"
+                  name="postalCode"
+                  className="form-control"
+                  value={this.state.postalCode}
+                  onChange={e =>
+                    this.setState({ postalCode: e.currentTarget.value })
+                  }
+                  placeholder={intl.formatMessage(
+                    this.intlMessages.postalCodePlaceholder
+                  )}
+                  pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}"
+                  required
+                />
+              </div>
+              </div>
+              
               <div className="col-12">
                 <div className="form-group">
                   <label htmlFor="description">
@@ -178,6 +321,7 @@ class EditProfile extends Component {
                     placeholder={intl.formatMessage(
                       this.intlMessages.descriptionPlaceholder
                     )}
+                    required
                   />
                 </div>
               </div>

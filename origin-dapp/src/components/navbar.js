@@ -14,7 +14,7 @@ class NavBar extends Component {
     const { showNav, mobileDevice } = this.props
 
     return showNav && (
-      <nav className="navbar navigation-bar navbar-expand-lg navbar-dark">
+      <nav className="navbar navigation-bar navbar-expand-lg" style={{backgroundColor: "#2462a7"}}>
         <div className="container">
           <button
             className="navbar-toggler mr-3"
@@ -25,10 +25,10 @@ class NavBar extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <img src="images/origin-icon-white.svg" alt="Origin menu" />
+            <img src="images/origin-icon-white.svg" alt="CleanersDApp Menu" style={{width: "50px", height: "50px"}} />
           </button>
           <Link
-            to="/"
+            to="/home"
             className="navbar-brand mr-auto mr-lg-3"
             ga-category="top_nav"
             ga-label="logo"
@@ -37,7 +37,8 @@ class NavBar extends Component {
               <img
                 src="images/origin-logo.svg"
                 className="origin-logo"
-                alt="Origin Protocol"
+                alt="CleanersDApp"
+                style={{width: "150px", height: "150px"}}
               />
             </div>
           </Link>
@@ -45,89 +46,40 @@ class NavBar extends Component {
             className="collapse navbar-collapse order-2 order-lg-1"
             id="navbarSupportedContent"
           >
-            <div className="navbar-nav justify-content-end">
+            <div className="navbar-nav justify-content-center">
               <Link
-                to="/"
-                className="d-lg-none nav-item nav-link"
+                to="/my-listings"
+                className="nav-item nav-link"
                 ga-category="top_nav"
-                ga-label="listings"
+                ga-label="sell_dropdown_my_listings"
               >
                 <FormattedMessage
-                  id={'navbar.listings'}
-                  defaultMessage={'Listings'}
+                  id={'navbar.myListings'}
+                  defaultMessage={'Mis Ofertas'}
                 />
               </Link>
               <Link
-                to="/my-purchases"
+                to="/my-sales"
+                className="nav-item nav-link"
+                ga-category="top_nav"
+                ga-label="sell_dropdown_my_sales"
+              >
+                <FormattedMessage
+                  id={'navbar.mySales'}
+                  defaultMessage={'Mis Ofertas Consumidas'}
+                />
+              </Link>
+              <Link
+                to="/home"
                 className="nav-item nav-link"
                 ga-category="top_nav"
                 ga-label="buying"
               >
                 <FormattedMessage
                   id={'navbar.buying'}
-                  defaultMessage={'Buying'}
+                  defaultMessage={'Ofertas Disponibles'}
                 />
               </Link>
-              <div className="sell dropdown">
-                <a
-                  className="dropdown-toggle nav-item nav-link"
-                  id="sellDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  ga-category="top_nav"
-                  ga-label="sell_dropdown"
-                >
-                  <FormattedMessage
-                    id={'navbar.selling'}
-                    defaultMessage={'Selling'}
-                  />
-                </a>
-                <div
-                  className="dropdown-menu dropdown-menu-right"
-                  aria-labelledby="sellDropdown"
-                >
-                  <div className="triangle-container d-none d-lg-flex justify-content-end">
-                    <div className="triangle" />
-                  </div>
-                  <div className="actual-menu">
-                    <Link
-                      to="/my-listings"
-                      className="dropdown-item"
-                      ga-category="top_nav"
-                      ga-label="sell_dropdown_my_listings"
-                    >
-                      <FormattedMessage
-                        id={'navbar.myListings'}
-                        defaultMessage={'My Listings'}
-                      />
-                    </Link>
-                    <Link
-                      to="/my-sales"
-                      className="dropdown-item"
-                      ga-category="top_nav"
-                      ga-label="sell_dropdown_my_sales"
-                    >
-                      <FormattedMessage
-                        id={'navbar.mySales'}
-                        defaultMessage={'My Sales'}
-                      />
-                    </Link>
-                    <Link
-                      to="/create"
-                      className="dropdown-item d-none d-lg-block"
-                      ga-category="top_nav"
-                      ga-label="sell_dropdown_add_listing"
-                    >
-                      <FormattedMessage
-                        id={'navbar.addListing'}
-                        defaultMessage={'Add a Listing'}
-                      />
-                    </Link>
-                  </div>
-                </div>
-              </div>
               <Link
                 to="/create"
                 className="nav-item nav-link"
@@ -141,14 +93,12 @@ class NavBar extends Component {
                 />
                 <FormattedMessage
                   id={'navbar.addListing'}
-                  defaultMessage={'Add a Listing'}
+                  defaultMessage={'Publicar Oferta'}
                 />
               </Link>
             </div>
           </div>
           <div className="static navbar-nav order-1 order-lg-2 d-flex flex-row justify-content-end">
-            { !mobileDevice && <ConnectivityDropdown /> }
-            <TransactionsDropdown />
             <MessagesDropdown />
             <NotificationsDropdown />
             <UserDropdown />

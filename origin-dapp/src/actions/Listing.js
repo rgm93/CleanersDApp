@@ -49,8 +49,18 @@ export function getListingIds() {
       //   }
       // }
 
-      const ids = await origin.marketplace.getListings({ idsOnly: true })
+      //const ids = await origin.marketplace.getListingIdsByCategory(category)
+      const ids = await origin.marketplace.getListings({idsOnly: true})
+      
 
+      /*const listings = await Promise.all(
+        ids.map(id => {
+          return getListing(id, true)
+        })
+      )
+
+      console.log("LERITBE: " + JSON.stringify(listings));*/
+      
       dispatch({
         type: ListingConstants.FETCH_IDS_SUCCESS,
         ids

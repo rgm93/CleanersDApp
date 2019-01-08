@@ -21,7 +21,7 @@ import ImageCropper from 'components/modals/image-cropper'
 import { ProviderModal, ProcessingModal } from 'components/modals/wait-modals'
 
 import Guidance from './_Guidance'
-import Services from './_Services'
+import Services from './_ServicesProfile'
 import Strength from './_Strength'
 
 import EditProfile from './EditProfile'
@@ -33,15 +33,8 @@ import VerifyAirbnb from './VerifyAirbnb'
 import ConfirmPublish from './ConfirmPublish'
 import ConfirmUnload from './ConfirmUnload'
 import AttestationSuccess from './AttestationSuccess'
+import ListingsProperties from 'components/my-listings-profile'
 
-/*
-const etherscanNetworkUrls = {
-  1: '',
-  3: 'ropsten.',
-  4: 'rinkeby.',
-  42: 'kovan.',
-  999: 'localhost.'
-}*/
 class Profile extends Component {
   constructor(props) {
     super(props)
@@ -54,20 +47,12 @@ class Profile extends Component {
       this
     )
     this.profileDeploymentComplete = this.profileDeploymentComplete.bind(this)
-    /*
-      Three-ish Profile States
 
-      published: Published to blockchain
-      provisional: Ready to publish to blockchain
-      userForm: Values for controlled components
-      * TODO: cache provisional state with local storage
-    */
-
-    const { firstName, lastName, description } = this.props.provisional
+    const { firstName, lastName, description, roleName, username, password, postalCode, nif } = this.props.provisional
 
     this.state = {
       lastPublish: null,
-      userForm: { firstName, lastName, description },
+      userForm: { firstName, lastName, description, roleName, username, password, postalCode, nif },
       lastPublishTime: null,
       modalsOpen: {
         attestationSuccess: false,
@@ -133,7 +118,7 @@ class Profile extends Component {
     })
   }
 
-  componentDidMount() {
+  /*componentDidMount() {
     this.setProgress({
       provisional: this.props.provisionalProgress,
       published: this.props.publishedProgress
@@ -142,7 +127,7 @@ class Profile extends Component {
     if ($('.identity.dropdown').hasClass('show')) {
       $('#identityDropdown').dropdown('toggle')
     }
-  }
+  }*/
 
   componentDidUpdate(prevProps) {
     // prompt user if tab/window is closing before changes have been published
@@ -277,6 +262,11 @@ class Profile extends Component {
     const description =
       provisional.description ||
       this.props.intl.formatMessage(this.intlMessages.noDescriptionUser)
+    const roleName = provisional.roleName === "Owner" ? "Propietario" : (provisional.roleName === "Cleaner" ? "Limpiador" : "")
+    const username = provisional.username
+    const nif = provisional.nif
+    const postalCode = provisional.postalCode
+    const attestations = provisional.modalsOpen
 
     const statusClassMap = {
       unpublished: 'not-published'
@@ -296,22 +286,28 @@ class Profile extends Component {
     const statusClass = statusClassMap[publishStatus]
     const statusText = statusTextMap[publishStatus]
 
+    console.log("LAST" + JSON.stringify(this.state.lastPublish))
+    console.log("MODALSOPEN" + JSON.stringify(this.state.modalsOpen))
+    console.log("PROGRSSS" + JSON.stringify(this.state.progress))
+    console.log("SM" + JSON.stringify(this.state.successMessage))
+    console.log("ATTESTATIONS: " + JSON.stringify(attestations))
+
     return (
       <div className="current-user profile-wrapper">
         <div className="container">
           <div className="row">
-            <div className="col-12 col-lg-8">
+            <div className="col-12 col-lg-12">
               <div className="row attributes">
-                <div className="col-4 col-md-3">
+                <div className="col-4 col-md-2">
                   <Avatar
                     image={provisional.pic}
                     className="primary"
                     placeholderStyle="unnamed"
                   />
                 </div>
-                <div className="col-8 col-md-9">
+                <div className="col-12 col-md-8">
                   <div className="name d-flex">
-                    <h1>{fullName || <UnnamedUser />}</h1>
+                    <h1>{fullName|| <UnnamedUser />}</h1>
                     <div className="icon-container">
                       <button
                         className="edit-profile"
@@ -322,83 +318,45 @@ class Profile extends Component {
                       </button>
                     </div>
                   </div>
-                  <p className="ws-aware">{description}</p>
+                  <div />
+                  <div className="row">
+                    <div className="col-6"> 
+                      <p className="ws-ware">{"Usuario: " + username}</p> 
+                    </div>
+
+                    <div className="col-6"> 
+                      <p className="ws-ware">{"Rol: " + roleName}</p>
+                    </div>
+
+                    <div className="col-6"> 
+                      <p className="ws-aware">{"NIF: " + nif }</p>
+                    </div>
+
+                    <div className="col-6"> 
+                      <p className="ws-ware">{"Código Postal: " + postalCode}</p>
+                    </div>
+                    
+                    <div className="col-6"> 
+                      <p className="ws-aware">{"Descripción: " + description}</p>
+                    </div>
+                  </div>
+                  
                 </div>
               </div>
 
-              <h2>
-                <FormattedMessage
-                  id={'Profile.verifyYourselfHeading'}
-                  defaultMessage={'Verify yourself on Origin'}
-                />
-              </h2>
               <Services
                 published={published}
                 provisional={provisional}
                 handleToggle={this.handleToggle}
               />
-
-              <div className="col-12">
-                <Strength strength={profile.strength} progress={progress} />
-                {!hasChanges && (
-                  <button
-                    className="publish btn btn-sm btn-primary d-block"
-                    disabled
-                  >
-                    <FormattedMessage
-                      id={'Profile.publishNow'}
-                      defaultMessage={'Publish Now'}
-                    />
-                  </button>
-                )}
-                {hasChanges && (
-                  <button
-                    className="publish btn btn-sm btn-primary d-block"
-                    onClick={() => {
-                      this.setState({
-                        modalsOpen: { ...modalsOpen, publish: true }
-                      })
-                    }}
-                  >
-                    <FormattedMessage
-                      id={'Profile.publishNow'}
-                      defaultMessage={'Publish Now'}
-                    />
-                  </button>
-                )}
-                {publishStatus && (
-                  <div className="published-status text-center">
-                    <span>
-                      <FormattedMessage
-                        id={'Profile.status'}
-                        defaultMessage={'Status:'}
-                      />
-                    </span>
-                    <span className={statusClass}>{statusText}</span>
-                    {hasPublishedAllChanges && (
-                      <span>
-                        <FormattedMessage
-                          id={'Profile.lastPublished'}
-                          defaultMessage={'Last published'}
-                        />{' '}
-                        {this.state.lastPublishTime}
-                      </span>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-            <div className="col-12 col-lg-4">
-              <WalletCard
-                wallet={wallet}
-                identityAddress={this.props.identityAddress}
-                withMenus={true}
-                withProfile={false}
-              />
-              <Guidance />
             </div>
           </div>
         </div>
+
+        <div className="container">
+          <ListingsProperties renderMode="home-page"/>
+        </div>
+        
 
         <EditProfile
           open={modalsOpen.profile}
@@ -412,9 +370,11 @@ class Profile extends Component {
               modalsOpen: {
                 ...modalsOpen,
                 profile: false,
-                attestationSuccess: true
+                attestationSuccess: true,
+                publish: true
               }
             })
+
           }}
           handleCropImage={(imageToCrop) => {
             this.setState({
@@ -585,11 +545,11 @@ class Profile extends Component {
           }}
         />
 
-        <AttestationSuccess
+        {/*<AttestationSuccess
           open={modalsOpen.attestationSuccess}
           message={successMessage}
           handleToggle={this.handleToggle}
-        />
+        />*/}
 
         {this.props.profile.status === 'confirming' && <ProviderModal />}
 
@@ -692,7 +652,12 @@ Profile.getDerivedStateFromProps = (nextProps, prevState) => {
       userForm: {
         firstName: nextProps.published.firstName,
         lastName: nextProps.published.lastName,
-        description: nextProps.published.description
+        description: nextProps.published.description,
+        roleName: nextProps.published.roleName,
+        username: nextProps.published.username,
+        password: nextProps.published.password,
+        postalCode: nextProps.published.postalCode,
+        nif: nextProps.published.nif
       },
       wallet: nextProps.wallet
     }
@@ -705,6 +670,7 @@ const mapStateToProps = state => {
     deployResponse: state.profile.deployResponse,
     issuer: state.profile.issuer,
     published: state.profile.published,
+    attestations: state.attestations,
     provisional: state.profile.provisional,
     strength: state.profile.strength,
     changes: state.profile.changes,

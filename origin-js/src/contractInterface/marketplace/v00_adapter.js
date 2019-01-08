@@ -136,6 +136,16 @@ class V00_MarkeplaceAdapter {
     return Object.assign({ timestamp }, transactionReceipt)
   }
 
+  async withoutdrawListing(listingId, ipfsBytes, confirmationCallback) {
+    const from = await this.contractService.currentAccount()
+    const { transactionReceipt, timestamp } = await this.call(
+      'withoutdrawListing',
+      [listingId, from, ipfsBytes],
+      { from, confirmationCallback }
+    )
+    return Object.assign({ timestamp }, transactionReceipt)
+  }
+
   async makeOffer(listingId, ipfsBytes, data, confirmationCallback) {
     const {
       affiliate,

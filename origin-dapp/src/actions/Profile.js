@@ -60,6 +60,11 @@ export function deployProfile() {
         firstName: provisional.firstName,
         lastName: provisional.lastName,
         description: provisional.description,
+        roleName: provisional.roleName,
+        username: provisional.username,
+        password: provisional.password,
+        postalCode: provisional.postalCode,
+        nif: provisional.nif,
         avatar: provisional.pic
       },
       attestations: [],

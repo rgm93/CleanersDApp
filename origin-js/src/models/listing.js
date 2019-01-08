@@ -31,7 +31,8 @@ export class Listing {
    *  - {string} deposit
    *  - {string} depositManager - address of depositManager
    */
-  constructor({ id, title, display, description, category, subCategory, status, type, media,
+  constructor({ id, title, display, description, category, subCategory, propertyList, postalCode, datetime, 
+    frequency, startDate, hours, haveProducts, nif, phone, zone, city, status, type, media,
     unitsTotal, offers, events, ipfs, ipfsHash, language, price, seller, commission, slots,
     schemaId, deposit, depositManager, expiry, commissionPerUnit }) {
 
@@ -40,6 +41,17 @@ export class Listing {
     this.description = description
     this.category = category
     this.subCategory = subCategory
+    this.propertyList = propertyList
+    this.postalCode = postalCode,
+    this.datetime = datetime,
+    this.frequency = frequency,
+    this.startDate = startDate,
+    this.hours = hours,
+    this.haveProducts = haveProducts,
+    this.nif = nif,
+    this.phone = phone,
+    this.zone = zone,
+    this.city = city,
     this.status = status
     this.type = type
     this.unitsTotal = unitsTotal
@@ -69,6 +81,17 @@ export class Listing {
       description: ipfsListing.description,
       category: ipfsListing.category,
       subCategory: ipfsListing.subCategory,
+      propertyList: ipfsListing.propertyList,
+      postalCode: ipfsListing.postalCode,
+      datetime: ipfsListing.datetime,
+      frequency: ipfsListing.frequency,
+      startDate: ipfsListing.startDate,
+      hours: ipfsListing.hours,
+      haveProducts: ipfsListing.haveProducts,
+      nif: ipfsListing.nif,
+      phone: ipfsListing.phone,
+      zone: ipfsListing.zone,
+      city: ipfsListing.city,
       status: chainListing.status,
       type: ipfsListing.type,
       unitsTotal: ipfsListing.unitsTotal,
@@ -99,6 +122,17 @@ export class Listing {
       description: discoveryNodeData.description,
       category: discoveryNodeData.category,
       subCategory: discoveryNodeData.subCategory,
+      propertyList: discoveryNodeData.propertyList,
+      postalCode: discoveryNodeData.postalCode,
+      datetime: discoveryNodeData.datetime,
+      frequency: discoveryNodeData.frequency,
+      startDate: discoveryNodeData.startDate,
+      hours: discoveryNodeData.hours,
+      haveProducts: discoveryNodeData.haveProducts,
+      nif: discoveryNodeData.nif,
+      phone: discoveryNodeData.phone,
+      zone: discoveryNodeData.zone,
+      city: discoveryNodeData.city,
       status: discoveryNodeData.status,
       type: discoveryNodeData.type,
       unitsTotal: discoveryNodeData.unitsTotal,

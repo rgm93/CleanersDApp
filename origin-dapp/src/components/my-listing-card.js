@@ -14,12 +14,45 @@ import origin from '../services/origin'
 class MyListingCard extends Component {
   constructor(props) {
     super(props)
-
+    //const { listing } = this.props
+    const { id, seller, status, schemaType, category, display, name, description, postalCode,
+            datetime, frequency, startDate, hours, haveProducts, pictures, price, boostValue,
+            boostLevel, ipfsHash, listingType, events } = this.props.listing
+    this.state = {
+      listing: {
+        id,
+        seller,
+        status,
+        schemaType,
+        category,
+        display,
+        name,
+        description,
+        postalCode,
+        datetime,
+        frequency,
+        startDate,
+        hours,
+        haveProducts,
+        pictures,
+        price,
+        boostValue,
+        boostLevel,
+        ipfsHash,
+        listingType,
+        events
+      }
+    }
     this.intlMessages = defineMessages({
       confirmCloseListing: {
         id: 'my-listing-card.confirmCloseListing',
         defaultMessage:
-          'Are you sure that you want to permanently close this listing? This cannot be undone.'
+          '¿Quieres deshabilitar el anuncio?'
+      },
+      confirmOpenListing: {
+        id: 'my-listing-card.confirmOpenListing',
+        defaultMessage:
+          '¿Quieres volver a publicar el anuncio?'
       }
     })
 
@@ -33,12 +66,11 @@ class MyListingCard extends Component {
   async closeListing() {
     const {
       intl,
-      listing,
+      //listing,
       handleProcessing,
       onClose,
-      updateTransaction
     } = this.props
-    const { address } = listing
+    const { address } = this.state.listing
     const prompt = confirm(
       intl.formatMessage(this.intlMessages.confirmCloseListing)
     )
@@ -50,12 +82,57 @@ class MyListingCard extends Component {
     try {
       handleProcessing(true)
 
-      const {
+      console.log("LISTADO: " + JSON.stringify(this.state.listing))
+
+      
+
+
+      //this.setState({ listing: {state: stt} });
+
+      
+      //let listingCopy = JSON.parse(JSON.stringify(this.state.listing))my
+
+      //listingCopy.state = stt;
+
+      console.log("ESTADO DEL ESTADO: " + JSON.stringify(stt))
+
+      const stt = this.state.listing.status === "active" ? "inactive" : "active";
+
+      let listingCopy = Object.assign({}, this.props.listing);
+      listingCopy.status = stt;                       
+ 
+      const listing = listingCopy
+      var id = listing.id
+
+      console.log("id => " + id)
+      
+      const methodName = 'updateListing'
+
+
+      transactionReceipt = await origin.marketplace[methodName](
+        id,
+        listing,
+        0,
+        (confirmationCount, transactionReceipt) => {
+          onClose && onClose()
+          this.props.updateTransaction(confirmationCount, transactionReceipt)
+        }
+      )
+
+      const transactionTypeKey = 'updateListing'
+
+      this.props.upsertTransaction({
+        ...transactionReceipt,
+        transactionTypeKey
+      })
+
+      /*const {
         created,
         transactionReceipt
-      } = await origin.marketplace.withdrawListing(
-        this.props.listing.id,
+      } = await origin.marketplace.updateListing(
+        listingCopy.id,
         {},
+        0,
         (confirmationCount, transactionReceipt) => {
           // Having a transaction receipt doesn't guarantee that the listing status will have changed.
           // Let's relentlessly retrieve the data so that we are sure to get it. - Micah
@@ -65,13 +142,23 @@ class MyListingCard extends Component {
         }
       )
 
+      const transactionTypeKey = 'updateListing'
+
       this.props.upsertTransaction({
         ...transactionReceipt,
         created,
-        transactionTypeKey: 'closeListing'
-      })
+        transactionTypeKey
+      })*/
+
+      /*this.props.updateTransaction({
+        ...transactionReceipt,
+        created,
+        transactionTypeKey
+      })*/
 
       handleProcessing(false)
+
+
     } catch (error) {
       handleProcessing(false)
       console.error(`Error closing listing ${address}`)
@@ -147,13 +234,23 @@ class MyListingCard extends Component {
                     <Link to={`/update/${listing.id}`}>
                         <FormattedMessage
                           id={'my-listing-card.editListing'}
-                          defaultMessage={'Edit Listing'}
+                          defaultMessage={'Editar oferta'}
                         />
                     </Link>
                     <a className="warning" onClick={this.closeListing}>
                       <FormattedMessage
                         id={'my-listing-card.closeListing'}
-                        defaultMessage={'Close Listing'}
+                        defaultMessage={'Cerrar oferta'}
+                      />
+                    </a>
+                  </Fragment>
+                )}
+                {status === 'active' ? null : (
+                  <Fragment>
+                    <a className="secondary" onClick={this.closeListing}>
+                      <FormattedMessage
+                        id={'my-listing-card.openListing'}
+                        defaultMessage={'Abrir oferta'}
                       />
                     </a>
                   </Fragment>

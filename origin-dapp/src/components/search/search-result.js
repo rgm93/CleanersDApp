@@ -70,7 +70,7 @@ class SearchResult extends Component {
   }
 
   componentDidMount() {
-    /* this force update is required after component initializes. In cases where user returns to the 
+    /* this force update is required after component initializes. In cases where user returns to the
      * search-result page. Then no props change from previous to current and for that reason search and
      * schema loading do not get triggered.
      */
@@ -194,11 +194,24 @@ class SearchResult extends Component {
 
       const filters = this.props.filters
 
+      const roleName = this.props.provisional.roleName;
+      var category = null;
+      console.log("ROLENAMECOMPONENT: " + JSON.stringify(roleName));
+      if(roleName == 'Cleaner')
+      {
+        category = 'schema.services.homeCleaning';
+      }
+      else if (roleName == 'Owner') {
+        category = 'schema.services.cleaningOffer';
+      }
+
+      console.log("CATEGORY: " + JSON.stringify(category));
+
       // when querying all listings no filter should be added
       if (this.props.listingType.type !== 'all') {
         filters.category = {
           name: 'category',
-          value: this.props.listingType.translationName.id,
+          value: category.id,
           valueType: VALUE_TYPE_STRING,
           operator: FILTER_OPERATOR_EQUALS
         }
@@ -224,7 +237,7 @@ class SearchResult extends Component {
         'ETH',
         false
       )
-      
+
       const minPrice = getFiatPrice(searchResp.data.listings.stats.minPrice,
         'USD',
         'ETH',
@@ -303,7 +316,8 @@ const mapStateToProps = state => ({
   listingType: state.search.listingType,
   query: state.search.query,
   filters: state.search.filters,
-  generalSearchId: state.search.generalSearchId
+  generalSearchId: state.search.generalSearchId,
+  provisional: state.profile.provisional
 })
 
 const mapDispatchToProps = dispatch => ({

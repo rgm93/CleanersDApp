@@ -1,7 +1,7 @@
 {
   "$schema":"http://json-schema.org/draft-06/schema#",
   "type": "object",
-  "required": ["name","category","description"],
+  "required": ["name","category","description", "price", "postalCode"],
   "properties": {
     "name": {
       "type": "string",
@@ -13,41 +13,8 @@
       "type": "string",
       "title": "schema.services.examples",
       "enum": [
-        "schema.services.deliveryService",
-        "schema.services.dogWalking",
-        "schema.services.homeCleaning"
+        "schema.services.cleaningOffer"
       ]
-    },
-    "category": {
-      "type": "string",
-      "title": "schema.services.category",
-      "enum": [
-        "schema.services.businessServices",
-        "schema.services.counseling",
-        "schema.services.deliveryService",
-        "schema.services.educationServices",
-        "schema.services.dogWalking",
-        "schema.services.electrical",
-        "schema.services.generalContractors",
-        "schema.services.graphicDesign",
-        "schema.services.handyman",
-        "schema.services.homeCleaning",
-        "schema.services.homeServices",
-        "schema.services.legal",
-        "schema.services.movingHelp",
-        "schema.services.musicLessons",
-        "schema.services.other",
-        "schema.services.painting",
-        "schema.services.photography",
-        "schema.services.plumbing",
-        "schema.services.repairTechnicalSupport",
-        "schema.services.softwareDevelopement",
-        "schema.services.salonServices",
-        "schema.services.spaServices",
-        "schema.services.webDesign",
-        "schema.services.writingTranslationTranscription"
-      ],
-      "default":"schema.services.homeCleaning"
     },
     "description": {
       "type": "string",
@@ -55,9 +22,65 @@
       "minLength": 10,
       "maxLength": 1024
     },
+    "category": {
+      "type": "string",
+      "title": "schema.services.category",
+      "enum": [
+        "schema.services.cleaningOffer",
+        "schema.services.homeCleaning"
+      ],
+      "default":"schema.services.cleaningOffer"
+    },
     "price": {
       "type": "number",
       "title": "schema.services.priceInETH"
+    },
+    "propertyList": {
+      "type": "string",
+      "title": "schema.services.propertyList",
+      "enum": ["prueba"],
+      "default": ""
+    },
+    "postalCode": {
+      "type": "string",
+      "title": "schema.services.postalCode",
+      "minLength": 3,
+      "maxLength": 10
+    },
+    "datetime": {
+      "type": "string",
+      "format": "date",
+      "title": "schema.services.when"
+    },
+    "frequency": {
+      "type": "string",
+      "title": "schema.services.frequency",
+      "enum": [
+        "schema.services.frequency1day",
+        "schema.services.frequencysomeday",
+        "schema.services.frequencyeachweek",
+        "schema.services.frequencyeach2weeks"
+      ],
+      "default":"schema.services.frequency1day"
+    },
+    "startDate": {
+      "type": "string",
+      "title": "schema.services.startDate"
+    },
+    "hours": {
+      "type": "string",
+      "title": "schema.services.hours",
+      "minLength": 1,
+      "maxLength": 2
+    },
+    "haveProducts": {
+      "type": "string",
+      "title": "schema.services.haveProducts",
+      "enum": [
+        "schema.services.haveProductsYes",
+        "schema.services.haveProductsNo"
+      ],
+      "default":"schema.services.haveProductsYes"
     },
     "pictures": {
       "type": "array",

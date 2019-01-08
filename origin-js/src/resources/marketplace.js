@@ -137,6 +137,7 @@ export default class Marketplace {
    * TODO: This won't scale. Add support for pagination.
    * @param opts: {idsOnly: boolean, listingsFor: sellerAddress, purchasesFor: buyerAddress, withBlockInfo: boolean}
    *  - idsOnly: Returns only ids rather than the full Listing object.
+   *  - categor: Returns only ids with category
    *  - listingsFor: Returns latest version of all listings created by a seller.
    *  - purchasesFor: Returns all listings a buyer made an offer on.
    *  - withBlockinfo: Only used in conjunction with purchasesFor option. Loads version
@@ -170,6 +171,28 @@ export default class Marketplace {
       )
     }
   }
+
+  /*async getListingIdsByCategory(category) {
+    var arrayAuxListings = [];
+    console.log("EYFFFFF");
+    //const ids = await this.getListingIds();
+    //console.log("ENTRAIDS: " + JSON.stringify(ids));
+    const listings = await this.getListings({idsOnly: true})
+
+    console.log("LISTINGSID: " + JSON.stringify(listings));
+
+    var i;
+    for (i = 0; i < listings.length; i++) {
+      console.log("LISTINGSIDCATEGORY: " + JSON.stringify(listings[i].category));
+      if(listings[i].category == category) {
+        arrayAuxListings.push(i);
+      }
+    }
+
+    console.log("ARRAYAUX: " + JSON.stringify(arrayAuxListings));
+    
+    return Promise.all(arrayAuxListings);
+  }*/
 
   /**
    * Returns a Listing object based on its id.
@@ -402,6 +425,24 @@ export default class Marketplace {
       listingId,
       ipfsBytes,
       additionalDeposit,
+      confirmationCallback
+    )
+  }
+
+  /**
+   * Opens a listing.
+   * @param listingId
+   * @param ipfsData - Data to store in IPFS. For future use, currently empty.
+   * @param {func(confirmationCount, transactionReceipt)} confirmationCallback
+   * @return {Promise<{timestamp, ...transactionReceipt}>}
+   */
+  async withoutdrawListing(listingId, ipfsData = {}, confirmationCallback) {
+    const ipfsHash = await this.ipfsDataStore.load(LISTING_WITHDRAW_DATA_TYPE, ipfsData)
+    const ipfsBytes = this.contractService.getBytes32FromIpfsHash(ipfsHash)
+
+    return await this.resolver.withdrawListing(
+      listingId,
+      ipfsBytes,
       confirmationCallback
     )
   }

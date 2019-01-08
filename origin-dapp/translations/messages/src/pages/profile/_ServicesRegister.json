@@ -1,0 +1,18 @@
+[
+  {
+    "id": "_Services.poweredByRegister",
+    "defaultMessage": "Powered by"
+  },
+  {
+    "id": "_Services.pleaseConnectAccountsRegister",
+    "defaultMessage": "Conecta tu nueva cuenta con tu télefono y email para reforzar la identidad en CheKin."
+  },
+  {
+    "id": "_Services.phoneRegister",
+    "defaultMessage": "Phone"
+  },
+  {
+    "id": "_Services.emailRegister",
+    "defaultMessage": "Email"
+  }
+]

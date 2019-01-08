@@ -9,21 +9,73 @@ export default defineMessages({
     id: 'schema.services.examples',
     defaultMessage: 'Examples'
   },
-  'schema.services.category': {
-    id: 'schema.services.category',
-    defaultMessage: 'Category'
-  },
   'schema.services.description': {
     id: 'schema.services.description',
     defaultMessage: 'Description'
   },
+  'schema.services.category': {
+    id: 'schema.services.category',
+    defaultMessage: 'Category'
+  },
   'schema.services.priceInETH': {
     id: 'schema.services.priceInETH',
-    defaultMessage: 'Price in ETH'
+    defaultMessage: 'Precio/Hora'
+  },
+  'schema.services.propertyList': {
+    id: 'schema.services.propertyList',
+    defaultMessage: 'Propiedad a aplicar'
+  },
+  'schema.services.postalCode': {
+    id: 'schema.services.postalCode',
+    defaultMessage: 'Código Postal'
+  },
+  'schema.services.when': {
+    id: 'schema.services.when',
+    defaultMessage: 'Fecha del Servicio'
+  },
+  'schema.services.frequency': {
+    id: 'schema.services.frequency',
+    defaultMessage: 'Frecuencia del Servicio'
+  },
+  'schema.services.startDate': {
+    id: 'schema.services.startDate',
+    defaultMessage: 'Comienzo del Servicio'
+  },
+  'schema.services.hours': {
+    id: 'schema.services.hours',
+    defaultMessage: 'Horas a reservar'
+  },
+  'schema.services.haveProducts': {
+    id: 'schema.services.haveProducts',
+    defaultMessage: '¿Llevas productos de limpieza?'
   },
   'schema.services.selectPhotos': {
     id: 'schema.services.selectPhotos',
     defaultMessage: 'Select photos'
+  },
+  'schema.services.frequency1day': {
+    id: 'schema.services.frequency1day',
+    defaultMessage: 'Solamente 1 vez'
+  },
+  'schema.services.frequencysomeday': {
+    id: 'schema.services.frequencysomeday',
+    defaultMessage: 'Días consecutivos'
+  },
+  'schema.services.frequencyeachweek': {
+    id: 'schema.services.frequencyeachweek',
+    defaultMessage: 'Cada semana'
+  },
+  'schema.services.frequencyeach2weeks': {
+    id: 'schema.services.frequencyeach2weeks',
+    defaultMessage: 'Cada 2 semanas'
+  },
+  'schema.services.haveProductsYes': {
+    id: 'schema.services.haveProductsYes',
+    defaultMessage: 'Sí'
+  },
+  'schema.services.haveProductsNo': {
+    id: 'schema.services.haveProductsNo',
+    defaultMessage: 'No'
   },
   'schema.services.businessServices': {
     id: 'schema.services.businessServices',
@@ -63,7 +115,11 @@ export default defineMessages({
   },
   'schema.services.homeCleaning': {
     id: 'schema.services.homeCleaning',
-    defaultMessage: 'Home Cleaning'
+    defaultMessage: 'Oferta de Vivienda'
+  },
+  'schema.services.cleaningOffer': {
+    id: 'schema.services.cleaningOffer',
+    defaultMessage: 'Oferta de Limpieza'
   },
   'schema.services.homeServices': {
     id: 'schema.services.homeServices',

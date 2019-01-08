@@ -1,0 +1,162 @@
+[
+  {
+    "id": "listing-create.userRegistro",
+    "defaultMessage": "Usuario"
+  },
+  {
+    "id": "listing-create.navigationWarningRegistro",
+    "defaultMessage": "Are you sure you want to leave? If you leave this page your progress will be lost."
+  },
+  {
+    "id": "listing-create.stepNumberLabelRegistro",
+    "defaultMessage": "STEP {stepNumber}"
+  },
+  {
+    "id": "listing-create.createListingHeadingRegistro",
+    "defaultMessage": "Create Your Listing"
+  },
+  {
+    "id": "listing-create.showDetailsFormErrorMsgRegistro",
+    "defaultMessage": "Please fix errors before continuing."
+  },
+  {
+    "id": "continueButtonLabelRegistro",
+    "defaultMessage": "Continue"
+  },
+  {
+    "id": "listing-create.boost-your-listingRegistro",
+    "defaultMessage": "Boost Your Listing"
+  },
+  {
+    "id": "listing-create.form-help-boostRegistro",
+    "defaultMessage": "You can boost your listing to get higher visibility in the Origin DApp. More buyers will see your listing, which increases the chances of a fast and successful sale."
+  },
+  {
+    "id": "listing-create.no-ognRegistro",
+    "defaultMessage": "You have 0 {ogn} in your wallet."
+  },
+  {
+    "id": "listing-create.post-acquisitionRegistro",
+    "defaultMessage": "Once you acquire some OGN you will be able to boost your listing."
+  },
+  {
+    "id": "backButtonLabelRegistro",
+    "defaultMessage": "Back"
+  },
+  {
+    "id": "listing-create.reviewRegistro",
+    "defaultMessage": "Review"
+  },
+  {
+    "id": "listing-create.reviewListingHeadingRegistro",
+    "defaultMessage": "Review your listing"
+  },
+  {
+    "id": "listing-create.titleRegistro",
+    "defaultMessage": "Title"
+  },
+  {
+    "id": "listing-create.descriptionRegistro",
+    "defaultMessage": "Description"
+  },
+  {
+    "id": "listing-create.categoryRegistro",
+    "defaultMessage": "Category"
+  },
+  {
+    "id": "listing-create.postalCodeRegistro",
+    "defaultMessage": "Código Postal"
+  },
+  {
+    "id": "listing-create.dateTimeRegistro",
+    "defaultMessage": "Fecha del Servicio"
+  },
+  {
+    "id": "listing-create.frequencyRegistro",
+    "defaultMessage": "Frecuencia del Servicio"
+  },
+  {
+    "id": "listing-create.startDateRegistro",
+    "defaultMessage": "Comienzo del Servicio"
+  },
+  {
+    "id": "listing-create.hoursRegistro",
+    "defaultMessage": "Horas a Registror"
+  },
+  {
+    "id": "listing-create.haveProductsRegistro",
+    "defaultMessage": "¿Llevas productos de limpieza?"
+  },
+  {
+    "id": "listing-create.listing-priceRegistro",
+    "defaultMessage": "Listing Price"
+  },
+  {
+    "id": "listing-create.fractional-price-variesRegistro",
+    "defaultMessage": "Price varies by date"
+  },
+  {
+    "id": "listing-create.appropriate-valueRegistro",
+    "defaultMessage": "Approximate Value"
+  },
+  {
+    "id": "listing-create.boost-levelRegistro",
+    "defaultMessage": "Boost Level"
+  },
+  {
+    "id": "listing-create.backButtonLabelRegistro",
+    "defaultMessage": "Back"
+  },
+  {
+    "id": "listing-create.doneButtonLabelRegistro",
+    "defaultMessage": "Done"
+  },
+  {
+    "id": "listing-create.updateSuccessMessageRegistro",
+    "defaultMessage": "Your listing has been updated!"
+  },
+  {
+    "id": "listing-create.successMessageRegistro",
+    "defaultMessage": "Your listing has been created!"
+  },
+  {
+    "id": "listing-create.successDisclaimerRegistro",
+    "defaultMessage": "Your listing will be visible within a few seconds. Here's what happens next:"
+  },
+  {
+    "id": "listing-create.success-1Registro",
+    "defaultMessage": "Buyers will now see your listing on the marketplace."
+  },
+  {
+    "id": "listing-create.success-2Registro",
+    "defaultMessage": "When a buyer makes an offer on your listing, you can choose to accept or reject it."
+  },
+  {
+    "id": "listing-create.success-3Registro",
+    "defaultMessage": "Once the offer is accepted, you will be expected to fulfill the order."
+  },
+  {
+    "id": "listing-create.success-4Registro",
+    "defaultMessage": "You will receive payment once the buyer confirms that the order has been fulfilled."
+  },
+  {
+    "id": "listing-create.createAnotherRegistro",
+    "defaultMessage": "Create Another Listing"
+  },
+  {
+    "id": "listing-create.seeAllListingsRegistro",
+    "defaultMessage": "See All Listings"
+  },
+  {
+    "id": "listing-create.error1Registro",
+    "defaultMessage": "There was a problem creating this listing."
+  },
+  {
+    "id": "listing-create.error2Registro",
+    "defaultMessage": "See the console for more details."
+  },
+  {
+    "id": "listing-create.OKRegistro",
+    "defaultMessage": "OK"
+  }
+]

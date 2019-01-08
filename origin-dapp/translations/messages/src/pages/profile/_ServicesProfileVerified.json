@@ -1,0 +1,14 @@
+[
+  {
+    "id": "_Services.poweredByProfileUser",
+    "defaultMessage": "Powered by"
+  },
+  {
+    "id": "_Services.phoneProfileUser",
+    "defaultMessage": "Phone"
+  },
+  {
+    "id": "_Services.emailProfileUser",
+    "defaultMessage": "Email"
+  }
+]

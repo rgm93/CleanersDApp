@@ -57,7 +57,34 @@ class UserCard extends Component {
       userAddress,
       wallet
     } = this.props
+
     const { fullName, profile, attestations } = user
+    
+    
+    /*var prof = JSON.stringify(profile);
+
+    function replacer(key, value) {
+      console.log("VALUE: " + typeof value);
+      console.log("KEY: " + JSON.stringify(key));
+      if (key === 'roleName') {
+        return value;
+      }
+      return null;
+    }
+
+    var role = JSON.stringify(prof, replacer);
+
+    {profile.map(function(p, i) {
+      if(p.roleName) {
+        console.log(p.roleName)
+      }
+    })}*/
+
+    //console.log("USUARIO: " + JSON.stringify(user))
+    console.log("PROFPROF: " + JSON.stringify(profile))
+    console.log("ROLEROLE: " + JSON.stringify(role))
+    //const role = roleName === "Owner" ? "Propietario" : (roleName === "Cleaner" ? "Limpiador" : "")
+    var role = "";
 
     return (
       <div className="user-card placehold">
@@ -99,9 +126,12 @@ class UserCard extends Component {
             <Avatar image={profile && profile.avatar} placeholderStyle="blue" />
             <div className="identification d-flex flex-column justify-content-between">
               <div>
-                <Link to={`/users/${userAddress}`}>
-                  {fullName || <UnnamedUser />}
-                </Link>
+                { profile && profile.roleName && 
+                  <Link to={`/users/${userAddress}`}>
+                    { fullName + " (" || <UnnamedUser /> }
+                    { (profile.roleName === "Owner" ? "Propietario" : (profile.roleName === "Cleaner" ? "Limpiador" : "")) + ") "} 
+                  </Link>
+                }
               </div>
               {attestations &&
                 !!attestations.length && (
@@ -193,7 +223,7 @@ class UserCard extends Component {
   }
 }
 
-const mapStateToProps = ({ activation, users, wallet }, { userAddress }) => {
+const mapStateToProps = ({ activation, profile, users, wallet }, { userAddress }) => {
   return {
     // for reactivity
     messagingEnabled: activation.messaging.enabled,
@@ -202,7 +232,9 @@ const mapStateToProps = ({ activation, users, wallet }, { userAddress }) => {
     user: users.find(u => {
       return formattedAddress(u.address) === formattedAddress(userAddress)
     }) || {},
-    wallet
+    wallet,
+    provisional: profile.provisional,
+    profile: profile
   }
 }
 

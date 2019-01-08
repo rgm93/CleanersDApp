@@ -1,14 +1,14 @@
 [
   {
     "id": "footer.description",
-    "defaultMessage": "The Origin decentralized app allows buyers and sellers to transact without rent-seeking middlemen using the Ethereum blockchain and IPFS."
+    "defaultMessage": "The CheKin decentralized app allows owners and cleaners to transact without rent-seeking middlemen using the Ethereum blockchain and IPFS."
   },
   {
     "id": "footer.websiteLink",
-    "defaultMessage": "Visit our Website"
+    "defaultMessage": "Visit our Protocol Website"
   },
   {
     "id": "footer.githubLink",
-    "defaultMessage": "Visit our Github"
+    "defaultMessage": "Visit our Tools Website"
   }
 ]

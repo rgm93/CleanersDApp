@@ -36,22 +36,6 @@
     "defaultMessage": "Airbnb account verified!"
   },
   {
-    "id": "Profile.verifyYourselfHeading",
-    "defaultMessage": "Verify yourself on Origin"
-  },
-  {
-    "id": "Profile.publishNow",
-    "defaultMessage": "Publish Now"
-  },
-  {
-    "id": "Profile.status",
-    "defaultMessage": "Status:"
-  },
-  {
-    "id": "Profile.lastPublished",
-    "defaultMessage": "Last published"
-  },
-  {
     "id": "Profile.error",
     "defaultMessage": "Error"
   },

@@ -1,0 +1,166 @@
+[
+  {
+    "id": "listing-create.housingLabelReserva",
+    "defaultMessage": "Propiedad"
+  },
+  {
+    "id": "listing-create.servicesReserva",
+    "defaultMessage": "Oferta"
+  },
+  {
+    "id": "listing-create.navigationWarningReserva",
+    "defaultMessage": "Are you sure you want to leave? If you leave this page your progress will be lost."
+  },
+  {
+    "id": "listing-create.stepNumberLabelReserva",
+    "defaultMessage": "STEP {stepNumber}"
+  },
+  {
+    "id": "listing-create.createListingHeadingReserva",
+    "defaultMessage": "Create Your Listing"
+  },
+  {
+    "id": "listing-create.showDetailsFormErrorMsgReserva",
+    "defaultMessage": "Please fix errors before continuing."
+  },
+  {
+    "id": "continueButtonLabelReserva",
+    "defaultMessage": "Continue"
+  },
+  {
+    "id": "listing-create.boost-your-listingReserva",
+    "defaultMessage": "Boost Your Listing"
+  },
+  {
+    "id": "listing-create.form-help-boostReserva",
+    "defaultMessage": "You can boost your listing to get higher visibility in the Origin DApp. More buyers will see your listing, which increases the chances of a fast and successful sale."
+  },
+  {
+    "id": "listing-create.no-ognReserva",
+    "defaultMessage": "You have 0 {ogn} in your wallet."
+  },
+  {
+    "id": "listing-create.post-acquisitionReserva",
+    "defaultMessage": "Once you acquire some OGN you will be able to boost your listing."
+  },
+  {
+    "id": "backButtonLabelReserva",
+    "defaultMessage": "Back"
+  },
+  {
+    "id": "listing-create.reviewReserva",
+    "defaultMessage": "Review"
+  },
+  {
+    "id": "listing-create.reviewListingHeadingReserva",
+    "defaultMessage": "Review your listing"
+  },
+  {
+    "id": "listing-create.titleReserva",
+    "defaultMessage": "Title"
+  },
+  {
+    "id": "listing-create.descriptionReserva",
+    "defaultMessage": "Description"
+  },
+  {
+    "id": "listing-create.categoryReserva",
+    "defaultMessage": "Category"
+  },
+  {
+    "id": "listing-create.postalCodeReserva",
+    "defaultMessage": "Código Postal"
+  },
+  {
+    "id": "listing-create.dateTimeReserva",
+    "defaultMessage": "Fecha del Servicio"
+  },
+  {
+    "id": "listing-create.frequencyReserva",
+    "defaultMessage": "Frecuencia del Servicio"
+  },
+  {
+    "id": "listing-create.startDateReserva",
+    "defaultMessage": "Comienzo del Servicio"
+  },
+  {
+    "id": "listing-create.hoursReserva",
+    "defaultMessage": "Horas a Reservar"
+  },
+  {
+    "id": "listing-create.haveProductsReserva",
+    "defaultMessage": "¿Llevas productos de limpieza?"
+  },
+  {
+    "id": "listing-create.listing-priceReserva",
+    "defaultMessage": "Listing Price"
+  },
+  {
+    "id": "listing-create.fractional-price-variesReserva",
+    "defaultMessage": "Price varies by date"
+  },
+  {
+    "id": "listing-create.appropriate-valueReserva",
+    "defaultMessage": "Approximate Value"
+  },
+  {
+    "id": "listing-create.boost-levelReserva",
+    "defaultMessage": "Boost Level"
+  },
+  {
+    "id": "listing-create.backButtonLabelReserva",
+    "defaultMessage": "Back"
+  },
+  {
+    "id": "listing-create.doneButtonLabelReserva",
+    "defaultMessage": "Done"
+  },
+  {
+    "id": "listing-create.updateSuccessMessageReserva",
+    "defaultMessage": "Your listing has been updated!"
+  },
+  {
+    "id": "listing-create.successMessageReserva",
+    "defaultMessage": "Your listing has been created!"
+  },
+  {
+    "id": "listing-create.successDisclaimerReserva",
+    "defaultMessage": "Your listing will be visible within a few seconds. Here's what happens next:"
+  },
+  {
+    "id": "listing-create.success-1Reserva",
+    "defaultMessage": "Buyers will now see your listing on the marketplace."
+  },
+  {
+    "id": "listing-create.success-2Reserva",
+    "defaultMessage": "When a buyer makes an offer on your listing, you can choose to accept or reject it."
+  },
+  {
+    "id": "listing-create.success-3Reserva",
+    "defaultMessage": "Once the offer is accepted, you will be expected to fulfill the order."
+  },
+  {
+    "id": "listing-create.success-4Reserva",
+    "defaultMessage": "You will receive payment once the buyer confirms that the order has been fulfilled."
+  },
+  {
+    "id": "listing-create.createAnotherReserva",
+    "defaultMessage": "Create Another Listing"
+  },
+  {
+    "id": "listing-create.seeAllListingsReserva",
+    "defaultMessage": "See All Listings"
+  },
+  {
+    "id": "listing-create.error1Reserva",
+    "defaultMessage": "There was a problem creating this listing."
+  },
+  {
+    "id": "listing-create.error2Reserva",
+    "defaultMessage": "See the console for more details."
+  },
+  {
+    "id": "listing-create.OKReserva",
+    "defaultMessage": "OK"
+  }
+]

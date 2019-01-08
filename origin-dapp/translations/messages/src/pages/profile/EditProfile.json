@@ -12,16 +12,52 @@
     "defaultMessage": "Your Last Name"
   },
   {
+    "id": "EditProfile.roleNamePlaceholder",
+    "defaultMessage": "Your role"
+  },
+  {
+    "id": "EditProfile.usernamePlaceholder",
+    "defaultMessage": "Usuario"
+  },
+  {
+    "id": "EditProfile.passwordPlaceholder",
+    "defaultMessage": "Contraseña"
+  },
+  {
+    "id": "EditProfile.postalCodePlaceholder",
+    "defaultMessage": "Código Postal"
+  },
+  {
+    "id": "EditProfile.nifPlaceholder",
+    "defaultMessage": "NIF/DNI"
+  },
+  {
     "id": "EditProfile.editProfileHeading",
     "defaultMessage": "Edit Profile"
   },
   {
     "id": "EditProfile.firstName",
-    "defaultMessage": "First Name"
+    "defaultMessage": "Nombre"
   },
   {
     "id": "EditProfile.lastName",
-    "defaultMessage": "Last Name"
+    "defaultMessage": "Apellidos"
+  },
+  {
+    "id": "EditProfile.username",
+    "defaultMessage": "Username"
+  },
+  {
+    "id": "EditProfile.password",
+    "defaultMessage": "Password"
+  },
+  {
+    "id": "EditProfile.nif",
+    "defaultMessage": "NIF"
+  },
+  {
+    "id": "EditProfile.postalCode",
+    "defaultMessage": "Postal Code"
   },
   {
     "id": "EditProfile.description",

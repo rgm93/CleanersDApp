@@ -1,0 +1,22 @@
+[
+  {
+    "id": "my-listing-card-profile.confirmCloseListing",
+    "defaultMessage": "Are you sure that you want to permanently close this listing? This cannot be undone."
+  },
+  {
+    "id": "my-listing-card-profile.confirmOpenListing",
+    "defaultMessage": "Are you sure that you want to active this listing? This cannot be undone."
+  },
+  {
+    "id": "my-listing-card-profile.editListing",
+    "defaultMessage": "Editar propiedad"
+  },
+  {
+    "id": "my-listing-card-profile.closeListing",
+    "defaultMessage": "Desactivar propiedad"
+  },
+  {
+    "id": "my-listing-card-profile.openListing",
+    "defaultMessage": "Activar propiedad"
+  }
+]

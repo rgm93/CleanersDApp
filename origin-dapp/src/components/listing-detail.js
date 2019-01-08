@@ -8,7 +8,7 @@ import {
   injectIntl
 } from 'react-intl'
 
-import {
+import { 
   handleNotificationsSubscription } from 'actions/Activation'
 import { showAlert } from 'actions/Alert'
 import { storeWeb3Intent } from 'actions/App'
@@ -31,6 +31,8 @@ import { offerStatusToListingAvailability } from 'utils/offer'
 import { formattedAddress } from 'utils/user'
 
 import origin from '../services/origin'
+
+import { translateListingCategory } from 'utils/translationUtils'
 
 const { web3 } = origin.contractService
 
@@ -249,6 +251,16 @@ class ListingsDetail extends Component {
       // boostValue,
       category,
       description,
+      postalCode,
+      datetime,
+      frequency,
+      startDate,
+      hours,
+      haveProducts,
+      nif, 
+      phone,
+      zone,
+      city,
       display,
       isFractional,
       loading,
@@ -260,7 +272,7 @@ class ListingsDetail extends Component {
       status,
       step,
       schemaType,
-      featuredImageIdx
+      featuredImageIdx, 
       // unitsRemaining
     } = this.state
     const currentOffer = offers.find(o => {
@@ -287,6 +299,8 @@ class ListingsDetail extends Component {
     const showFeaturedBadge = display === 'featured' && isAvailable
     const userIsBuyer = currentOffer && formattedAddress(wallet.address) === formattedAddress(currentOffer.buyer)
     const userIsSeller = formattedAddress(wallet.address) === formattedAddress(seller)
+    const translatedFrequency = translateListingCategory(frequency)
+    const translatedHaveProduct = translateListingCategory(haveProducts)
 
     return (
       <div className="listing-detail">
@@ -493,7 +507,52 @@ class ListingsDetail extends Component {
                   }
                 </div>
               )}
-              <p className="ws-aware description placehold">{description}</p>
+              
+              {(category === 'Limpieza Residencial' || category === "Oferta de Limpieza") && (
+                <div>
+                  <p className="ws-aware description placehold">Descripción: {description}</p>
+                  <div className="row">
+                    <div className="col-6"> 
+                      <p className="ws-aware description placehold">Fecha del servicio: {datetime}</p>
+                    </div>
+                    <div className="col-6"> 
+                      <p className="ws-aware description placehold">Hora de la tarea: {startDate}</p>
+                    </div>
+                    <div className="col-6"> 
+                      <p className="ws-aware description placehold">Frecuencia: {translatedFrequency}</p>
+                    </div>
+                    <div className="col-6"> 
+                      <p className="ws-aware description placehold">Código Postal: {postalCode}</p>
+                    </div>
+                    <div className="col-6"> 
+                      <p className="ws-aware description placehold">Duración: {hours}h </p>
+                    </div>
+                    <div className="col-6"> 
+                      <p className="ws-aware description placehold">Productos de limpieza: {translatedHaveProduct}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {(category === 'Alquileres Vacacionales' || category === 'Empresa') && (
+                <div>
+                  <p className="ws-aware description placehold">Dirección: {description} </p>
+                  <div className="row">
+                    <div className="col-6">
+                      <p className="ws-aware description placehold">NIF Titular: {nif}</p>
+                    </div>
+                    <div className="col-6">
+                      <p className="ws-aware description placehold">Teléfono Titular: {phone}</p>
+                    </div>
+                    <div className="col-6">
+                      <p className="ws-aware description placehold">Municipio: {zone}</p>
+                    </div>
+                    <div className="col-6">
+                      <p className="ws-aware description placehold">Provincia: {city}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
               {/* Via Stan 5/25/2018: Hide until contracts allow for unitsRemaining > 1 */}
               {/*!!unitsRemaining && unitsRemaining < 5 &&
                 <div className="units-remaining text-danger">
@@ -515,7 +574,7 @@ class ListingsDetail extends Component {
                         maximumFractionDigits: 5,
                         minimumFractionDigits: 5
                       })}
-                        &nbsp;ETH
+                        &nbsp;ETH/h
                     </div>
                   }
                   {/* Via Matt 4/5/2018: Hold off on allowing buyers to select quantity > 1 */}
@@ -559,7 +618,7 @@ class ListingsDetail extends Component {
                           >
                               <FormattedMessage
                                 id={'listing-detail.myListings'}
-                                defaultMessage={'My Listings'}
+                                defaultMessage={'Mis ofertas'}
                               />
                           </Link>
                           <Link
@@ -570,7 +629,7 @@ class ListingsDetail extends Component {
                           >
                               <FormattedMessage
                                 id={'listing-detail.editListings'}
-                                defaultMessage={'Edit Listing'}
+                                defaultMessage={'Editar oferta'}
                               />
                           </Link>
                         </Fragment>
@@ -610,7 +669,7 @@ class ListingsDetail extends Component {
                           id={'listing-detail.reasonPending'}
                           defaultMessage={'This listing is {pending}'}
                           values={{
-                            pending: <strong>Pending</strong>
+                            pending: <strong>Pendiente</strong>
                           }}
                         />
                       )}
@@ -619,7 +678,7 @@ class ListingsDetail extends Component {
                           id={'listing-detail.reasonSold'}
                           defaultMessage={'This listing is {sold}'}
                           values={{
-                            sold: <strong>Sold</strong>
+                            sold: <strong>Consumido</strong>
                           }}
                         />
                       )}
@@ -665,7 +724,7 @@ class ListingsDetail extends Component {
                       >
                         <FormattedMessage
                           id={'listing-detail.viewListings'}
-                          defaultMessage={'View Listings'}
+                          defaultMessage={'Ver ofertas'}
                         />
                       </Link>
                     </Fragment>

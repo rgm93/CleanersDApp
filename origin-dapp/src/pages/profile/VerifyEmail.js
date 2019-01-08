@@ -44,7 +44,7 @@ class VerifyEmail extends Component {
           <img src="images/email-icon-dark.svg" role="presentation" />
         </div>
         <form onSubmit={this.handleSubmit}>
-          <h2>Verify Your Email Address</h2>
+          <h2>Verifica tu Email</h2>
           {this.state.generalErrors.length > 0 && (
             <div className="general-error">
               {this.state.generalErrors.join(' ')}
@@ -121,9 +121,9 @@ class VerifyEmail extends Component {
     return (
       <div className="form-group">
         <label htmlFor="email">
-          {'Enter your email address below and Origin'}
+          {'Introduce tu email y CheKin'}
           <sup>ID</sup>
-          {' will send you a verification code'}
+          {' te enviará un código de verificación'}
         </label>
         <div className={`form-control-wrap ${emailErrors ? 'error' : ''}`}>
           <input

@@ -48,17 +48,45 @@ class MyListings extends Component {
     }
   }
 
+  /*static getDerivedStateFromProps(props, state){
+    const roleName = props.provisional.roleName;
+
+    if(state.listings.length > 0 || roleName == state.roleName) {
+      return state;
+    }
+
+    var category = null;
+    if(roleName == 'Cleaner')
+    {
+      category = 'schema.housing.bussinessRentals';
+    }
+    else if (roleName == 'Owner') {
+      category = 'schema.housing.vacationRentals';
+    }
+
+    if(category) {
+      props.getListingIds();
+      return Object.assign({}, state, {loading: false });
+    }
+
+    return state;
+  }*/
+
   async loadListings() {
     try {
       const ids = await origin.marketplace.getListings({
         idsOnly: true,
         listingsFor: this.props.wallet.address
       })
-      const listings = await Promise.all(
+      const listings2 = await Promise.all(
         ids.map(id => {
           return getListing(id, true)
         })
-      )
+      );
+
+      var categoryPer = this.props.provisional.roleName === "Owner" ? "Limpieza Residencial" : "Oferta de Limpieza";
+      
+      const listings = await Promise.all(listings2.filter(list => list.category === categoryPer));
 
       this.setState({ listings, loading: false })
     } catch (error) {
@@ -235,7 +263,7 @@ class MyListings extends Component {
                       >
                         <FormattedMessage
                           id={'my-listings.all'}
-                          defaultMessage={'All'}
+                          defaultMessage={'Todas'}
                         />
                       </a>
                       <a
@@ -246,7 +274,7 @@ class MyListings extends Component {
                       >
                         <FormattedMessage
                           id={'my-listings.active'}
-                          defaultMessage={'Active'}
+                          defaultMessage={'Activas'}
                         />
                       </a>
                       <a
@@ -257,7 +285,7 @@ class MyListings extends Component {
                       >
                         <FormattedMessage
                           id={'my-listings.inactive'}
-                          defaultMessage={'Inactive'}
+                          defaultMessage={'Inactivas'}
                         />
                       </a>
                     </div>
@@ -286,10 +314,12 @@ class MyListings extends Component {
   }
 }
 
-const mapStateToProps = ({ app, wallet }) => {
+const mapStateToProps = ({ app, profile, wallet }) => {
   return {
     wallet,
-    web3Intent: app.web3.intent
+    web3Intent: app.web3.intent,
+    provisional: profile.provisional,
+    profile: profile,
   }
 }
 

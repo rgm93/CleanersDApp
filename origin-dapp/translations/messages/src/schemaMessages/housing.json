@@ -1,7 +1,7 @@
 [
   {
     "id": "schema.housing.title",
-    "defaultMessage": "Title"
+    "defaultMessage": "Nombre"
   },
   {
     "id": "schema.housing.examples",
@@ -13,7 +13,23 @@
   },
   {
     "id": "schema.housing.description",
-    "defaultMessage": "Description"
+    "defaultMessage": "Dirección"
+  },
+  {
+    "id": "schema.housing.NIF",
+    "defaultMessage": "NIF Titular"
+  },
+  {
+    "id": "schema.housing.phone",
+    "defaultMessage": "Teléfono Titular"
+  },
+  {
+    "id": "schema.housing.zone",
+    "defaultMessage": "Municipio"
+  },
+  {
+    "id": "schema.housing.city",
+    "defaultMessage": "Provincia"
   },
   {
     "id": "schema.housing.priceInETH",
@@ -53,7 +69,11 @@
   },
   {
     "id": "schema.housing.vacationRentals",
-    "defaultMessage": "Vacation Rentals"
+    "defaultMessage": "Vivienda"
+  },
+  {
+    "id": "schema.housing.bussinessRentals",
+    "defaultMessage": "Empresa"
   },
   {
     "id": "schema.housing.messageBuyer",

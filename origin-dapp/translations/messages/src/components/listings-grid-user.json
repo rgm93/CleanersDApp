@@ -1,0 +1,14 @@
+[
+  {
+    "id": "listings-grid.originContractNotFoundUser",
+    "defaultMessage": "No Origin listing contracts were found on this network."
+  },
+  {
+    "id": "listings-grid.changeNetworksUser",
+    "defaultMessage": "You may need to change networks, or deploy the contract."
+  },
+  {
+    "id": "listings-grid.listingsCountUser",
+    "defaultMessage": "{listingIdsCount} Propiedades"
+  }
+]

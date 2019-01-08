@@ -16,6 +16,26 @@
     "defaultMessage": "Description"
   },
   {
+    "id": "_ProvisionedChanges.roleName",
+    "defaultMessage": "Role"
+  },
+  {
+    "id": "_ProvisionedChanges.username",
+    "defaultMessage": "Username"
+  },
+  {
+    "id": "_ProvisionedChanges.password",
+    "defaultMessage": "Password"
+  },
+  {
+    "id": "_ProvisionedChanges.postalCode",
+    "defaultMessage": "Postal Code"
+  },
+  {
+    "id": "_ProvisionedChanges.nif",
+    "defaultMessage": "nif"
+  },
+  {
     "id": "_ProvisionedChanges.picture",
     "defaultMessage": "Picture"
   },

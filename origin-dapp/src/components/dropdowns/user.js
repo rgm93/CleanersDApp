@@ -71,6 +71,12 @@ class UserDropdown extends Component {
                 defaultMessage={'Edit Profile'}
               />
             </Link>
+            <Link to="/" className="btn edit-profile placehold" onClick={this.handleClick}>
+              <FormattedMessage
+                id={'user-dropdown.CloseSession'}
+                defaultMessage={'Cerrar Sesión'}
+              />
+            </Link>
           </div>
         </div>
       </div>

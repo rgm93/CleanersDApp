@@ -7,7 +7,7 @@ import Warning from 'components/warning'
 const Layout = ({ children }) => (
   <Fragment>
     <main className="d-flex flex-column">
-      <Warning />
+      {/*<Warning />*/}
       <NavBar />
       {children}
     </main>

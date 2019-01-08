@@ -3,7 +3,7 @@ import keyMirror from 'utils/keyMirror'
 export const TransactionConstants = keyMirror(
   {
     UPDATE: null,
-    UPSERT: null
+    UPSERT: null,
   },
   'TRANSACTION'
 )
